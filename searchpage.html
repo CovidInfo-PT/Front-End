@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>proxi_mo</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Page Content -->
+  <div id="bannerimage"></div>
+
+  <!-- =============================== Filtros =============================== -->
+    <div class="filters row">
+        <!-- First dropdown --> 
+        <div class="selectWrapper col-lg-4 ">
+            <select class="selectBox" disabled="true" id="districts" onChange="getCounty()">
+                <option>Distrito</option>
+            </select>
+        </div>
+
+        <!-- Second dropdown --> 
+        <div class="selectWrapper col-lg-4">
+            <select class="selectBox" disabled="true" id="counties">
+                <option>Concelho</option>
+            </select>
+        </div>
+
+        <div class="align-self-end ml-auto ">
+            <a class="btn" onclick="loadSearch()">
+                >
+            </a>
+        </div>
+
+    </div>
+  <!-- ======================================================================= -->
+  
+  
+    <div class="container">
+        <div class="row card-holder">
+
+            <!-- =============================== Filtros-Selecionaveis =============================== -->
+            <div class="col-lg-2">
+                <div class="list-group pad">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 4</a>
+                    <a href="#" class="list-group-item">Category 5</a>
+                    <a href="#" class="list-group-item">Category 6</a>
+                    <a href="#" class="list-group-item">Category 7</a>
+                    <a href="#" class="list-group-item">Category 8</a>
+                </div>
+            </div>
+            <!-- ======================================================================= -->
+    
+            <!-- === Espaçamento == -->
+            <div class ="col-lg-1 vertical-div">
+                <div class="vertical"></div>
+            </div> 
+            <!-- ================== -->
+            
+            <div class="col-lg-9">
+                <!-- === Resultados da Pesquisa == -->
+                <div class="row" id="results"></div>
+                <!-- ============================= -->
+                
+                <!-- === Carregar Mais Resultados == -->
+                <div class="row justify-content-center" id="loadMore" style="display: none;">
+                    <button class="btn col-lg-2" onclick="loadMore()">Load More</button>
+                </div>
+                <!-- ============================= -->
+
+            </div><!-- /.col-lg-9 -->
+            
+
+        </div><!-- /.row -->
+        
+
+  </div><!-- /.container -->
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+  </footer>
+
+ 
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Our JavaScript -->
+  <script src="search.js"></script>
+
+</body>
+
+</html>

@@ -100,11 +100,11 @@ h1{
   border-radius: 10px;
   border-color:#f1f4fa;
   background-color: #f1f4fa;
-  color: #707070;
 }
 
 .card:hover{
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .card:active{
@@ -114,8 +114,14 @@ h1{
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 
 }
+
 .card-title{
   margin-top:50px;
+  color: #383838;
+}
+
+.card-text{
+  color : #707070;
 }
 
 .card-holder{

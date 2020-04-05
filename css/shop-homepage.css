@@ -1,0 +1,112 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+ html {
+  height: 100%;
+}
+
+ body {
+  padding-top: 56px;
+  background-color:#f1f4fa;
+}
+
+.vertical { 
+  border-left: 2px solid rgba(46, 46, 46, 0.6); 
+  height: 200px; 
+  margin: auto;
+} 
+
+.card {
+  overflow: auto;
+  display: inline-block;
+  min-height: 20rem;
+  padding: 15px;
+  margin:0 0 40px 0;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15), -8px -5px 6px 2px  rgba(255, 255, 255, 0.5);
+  border-color:#f1f4fa;
+  background-color: #f1f4fa;
+}
+
+.card-title{
+  margin-top:50px;
+}
+
+.card-holder{
+  padding:10px;
+  padding-top:50px;
+  margin:10px;
+  margin-top:-30px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15), -8px -5px 6px 2px rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.card-img-top{
+  width: 85px;
+  height: 85px;
+  margin-bottom:-60px;
+  margin-right: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  z-index: 5;
+  position: relative;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15), -8px -5px 6px 2px  rgba(255, 255, 255, 0.5);
+}
+
+.pad{
+  padding:15px;
+}
+
+.footer{
+  height:100px;
+  background-color:#cccbcb;
+  margin-top:100px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.filters{
+  z-index: 7;
+  width:80%;
+  height:55px;
+  border-radius: 100px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15), -8px -5px 6px 2px  rgba(255, 255, 255, 0.5);
+  background-color: #f1f4fa;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  margin-top: -60px;
+  margin-right:200px;
+
+}
+
+/* ! Dropdown */
+.selectWrapper{
+  border-radius:36px;
+  width:100px;
+  display:inline-block;
+  overflow:hidden;
+  background:white;
+  border:1px solid #cccccc;
+}
+.selectBox{
+  width:flex;
+  height:40px;
+  border:0px;
+  outline:none;
+}
+
+#bannerimage {
+  width: 100%;
+  background-color:#f1f4fa;
+  /*background-image: url(http://s30.postimg.org/x0ne0p5wx/bootsrap.png);*/
+  height: 405px;
+  background-position: center;
+  margin-bottom: 100px;
+}

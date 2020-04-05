@@ -5,9 +5,10 @@
 > Note: Still not finished
 
 #### TO-DO:
--
--
--
+- Sidebar
+- Resize cards (js)
+- When zooming out filterbar goes crazy
+- etc
 
 	
 

@@ -54,11 +54,9 @@ h1{
   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
 }
 
-#bannerimage {
-  width: 100%;
-  background-color:#f1f4fa;
-  /*background-image: url(http://s30.postimg.org/x0ne0p5wx/bootsrap.png);*/
-  height: 405px;
+.bannerimage {
+  min-height:350px;
+  background-image: url("/img/versao_pc.png");
   background-position: center;
   margin-bottom: 100px;
 }

@@ -55,12 +55,22 @@ h1{
 }
 
 #bannerimage {
-  width: 100%;
-  background-color:#f1f4fa;
-  /*background-image: url(http://s30.postimg.org/x0ne0p5wx/bootsrap.png);*/
-  height: 405px;
+  width: auto;
+  /*background-color:#f1f4fa;*/
+  height: 800px;
+  background-position-x: right;
   background-position: center;
-  margin-bottom: 100px;
+  margin-bottom: -170px;
+  z-index:-1;
+  position:sticky;
+  display: block;
+  margin-left: auto;
+  margin-top: -250px;
+}
+
+.logo{
+  height:30px;
+  margin-left:120px;
 }
 
 .container-fluid {
@@ -177,6 +187,7 @@ h1{
   /*box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);*/
   border-radius: 15px;
   background-color: white;
+  z-index:4;
 }
 
 .card-img-top{

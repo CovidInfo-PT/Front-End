@@ -16,6 +16,7 @@
 |Nmec| Nome |
 |--|--|
 | 88887 | Flávia Figueiredo |
-| xxxxx | Rafael Teixeira
+| xxxxx | Rafael Teixeira |
+| 92963 | Duarte Mortágua
 
 

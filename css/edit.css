@@ -1,0 +1,284 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+
+ /* ! Fonts ! */
+ @font-face {
+	font-family: 'proxima_nova_rgregular';
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'proxima_nova_rgbold';
+	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'adelle_rgregular';
+	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/adelle_reg-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/adelle_reg-webfont.svg#adelle_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* ! CSS ! */
+
+html {
+  height: 100%;
+}
+
+ body {
+  font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
+  padding-top: 56px;
+  background-color:#f1f4fa;
+}
+
+
+h1{
+  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+}
+
+#bannerimage {
+  width: 100%;
+  background-color:#f1f4fa;
+  /*background-image: url(http://s30.postimg.org/x0ne0p5wx/bootsrap.png);*/
+  height: 405px;
+  background-position: center;
+  margin-bottom: 100px;
+}
+
+.container-fluid {
+  padding-left: 0px  !important;
+  padding-right: 0px !important;
+  width: 80%;
+  left: 10%;
+}
+.container-fluid .row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/* ! =================================== Search bar ========================================== */
+
+.search-bar{
+  z-index: 7;
+  height:55px;
+  border-radius: 100px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  background-color: #f1f4fa;
+  align-items: center;
+  position: sticky;
+  left: 30%;
+  width:40%;
+}
+
+/* ! ====================================== DropDown ====================================== */
+.selectWrapper{
+  border-radius:36px;
+  width:25%;
+  background:white;
+  margin:10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(-10%);}
+
+.selectBox{
+  width: 100%;
+  width:flex;
+  height:40px;
+  border:0px;
+  outline:none;
+}
+
+.dropdown-menu {
+  max-height:300px;
+  overflow-y : scroll;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+/* ! ====================================================================================== */
+
+/* ! ======================================= Search Button ======================================= */
+
+.search-button{
+  align-items: center;
+  display: inline-block;
+  transform: translateY(-30%);
+  border-radius: 100px;
+  border-color: #9CB0F5;
+  background-color: #9CB0F5;
+  height: 40px;
+  width: 40px;
+  color:#f1f4fa;
+}
+
+/* ! ====================================================================================== */
+/* ! ===================================== Cards ========================================== */
+.card {
+  overflow: auto;
+  display: inline-block;
+  width: 100%;
+  max-height: 15rem;
+  min-height: 5rem;
+  padding: 15px;
+  margin:30px;
+  border-radius: 10px;
+  border-color:#f1f4fa;
+  background-color: #f1f4fa;
+}
+
+.card:hover{
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card-clicked{
+  border-color:#9CB0F5;
+  background-color: #9CB0F5;
+  color:#f1f4fa;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+
+}
+
+.card-title{
+  margin-top:50px;
+  color: #383838;
+}
+
+.card-text{
+  color : #707070;
+}
+
+.card-holder{
+  padding:30px;
+  padding-top:50px;
+  margin:10px;
+  margin-top:-30px;
+  /*box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);*/
+  border-radius: 15px;
+  background-color: white;
+}
+
+.card-img-top{
+  width: 75px;
+  height: 75px;
+  margin-bottom:-100px;
+  margin-left:20px;
+  right:0;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 5;
+  position: sticky;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.10);
+}
+/* ! ====================================================================================== */
+
+
+.detail-card{
+  overflow: auto;
+  display: inline-block;
+  width: 100%;
+  max-height: 15rem;
+  min-height: 5rem;
+  padding: 15px;
+  margin:30px;
+  border-radius: 10px;
+  border-color:#f1f4fa;
+  background-color: #f1f4fa;
+}
+.detail-card:hover{
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+/* ! ==================================== Side-Filters ========================================== */
+.select-filters{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  text-align: center;
+}
+
+.select-title {
+  color: #383838;
+}
+
+.list-group-item{
+  border-radius: 10px !important;
+  border-color:#f1f4fa;
+  background-color: #f1f4fa;
+  border: 0px;
+  color: #707070;
+  margin-bottom: 2px;
+}
+
+.list-group-item:hover{
+  color: #383838;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.list-group-item-clicked{
+  border-color:#9CB0F5;
+  background-color: #9CB0F5;
+  color: #383838;;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+
+}
+
+/* ! ==================================== Footer ========================================== */
+.footer{
+  height:100px;
+  background-color:#cccbcb;
+  margin-top:100px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+/* ! ====================================================================================== */
+
+/* ! ============ SCROLL BAR ================================================================== */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.10);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9CB0F5; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(133, 154, 230); 
+}
+
+/* ! ====================================================================================== */

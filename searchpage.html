@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
@@ -14,81 +14,81 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/shop-homepage.css" rel="stylesheet">
-
+  <link href="css/edit.css" rel="stylesheet">
+  
 </head>
 
 <body>
-  <!-- Page Content -->
-  <div id="bannerimage"></div>
+    <!-- Page Content -->
+    <div id="bannerimage"></div>
 
-  <!-- =============================== Filtros =============================== -->
-    <div class="filters row">
-        <!-- First dropdown --> 
-        <div class="selectWrapper col-lg-4 ">
-            <select class="selectBox" disabled="true" id="districts" onChange="getCounty()">
-                <option>Distrito</option>
-            </select>
+    <!-- =============================== Filtros =============================== -->
+    <div class="search-bar row">
+        <!-- Districts dropdown --> 
+        <div class="dropdown selectWrapper">
+            <button id="districts" disabled class="btn dropdown-toggle selectBox" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Distritos
+            </button>
+            <ul id="districts_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
         </div>
 
-        <!-- Second dropdown --> 
-        <div class="selectWrapper col-lg-4">
-            <select class="selectBox" disabled="true" id="counties">
-                <option>Concelho</option>
-            </select>
+        <!-- Counties dropdown --> 
+        <div class="dropdown selectWrapper">
+            <button id="counties" disabled class="selectBox btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Concelhos
+            </button>
+            <ul id="counties_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
         </div>
+
 
         <div class="align-self-end ml-auto ">
-            <a class="btn" onclick="loadSearch()">
+            <button id="search_button" class="btn search-button" onclick="loadSearch()" disabled>
                 >
-            </a>
+            </button>
         </div>
 
     </div>
-  <!-- ======================================================================= -->
+    <!-- ======================================================================= -->
   
   
-    <div class="container">
-        <div class="row card-holder">
+    <div class="results container-fluid">
+        <div class="row card-holder justify-content-center">
 
             <!-- =============================== Filtros-Selecionaveis =============================== -->
-            <div class="col-lg-2">
-                <div class="list-group pad">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                    <a href="#" class="list-group-item">Category 4</a>
-                    <a href="#" class="list-group-item">Category 5</a>
-                    <a href="#" class="list-group-item">Category 6</a>
-                    <a href="#" class="list-group-item">Category 7</a>
-                    <a href="#" class="list-group-item">Category 8</a>
+            <div class="col-lg-2 select-filters">
+                <h4 class="select-title"><b>Serviços</b></h6>
+                <hr>
+                <div class="list-group" id="filters">
+                    <p class="list-group-item" id="Saúde" onclick="filerResults('Saúde')">Saúde</p>
+                    <p class="list-group-item" id="Farmácias" onclick="filerResults('Farmácias')">Farmácias</p>
+                    <p class="list-group-item" id="Restaurantes" onclick="filerResults('Restaurantes')">Restaurantes</p>
+                    <p class="list-group-item" id="Mercados" onclick="filerResults('Mercados')">Mercados</p>
+                    <p class="list-group-item" id="Padarias" onclick="filerResults('Padarias')">Padarias</p>
+                    <p class="list-group-item" id="Talhos" onclick="filerResults('Talhos')">Talhos</p>
+                    <p class="list-group-item" id="Peixarias" onclick="filerResults('Peixarias')">Peixarias</p>
+                    <p class="list-group-item" id="Bombas_de_Combustível" onclick="filerResults('Bombas_de_Combustível')">Bombas de Combustível</p>
+                    <p class="list-group-item" id="Gás" onclick="filerResults('Gás')">Gás</p>
+                    <p class="list-group-item" id="Oficinas" onclick="filerResults('Oficinas')">Oficinas</p>
+                    <p class="list-group-item" id="Bancos" onclick="filerResults('Bancos')">Bancos</p>
+                    <p class="list-group-item" id="Serviços_Administrativos" onclick="filerResults('Serviços_Administrativos')">Serviços Administrativos</p>
+                    <p class="list-group-item" id="Telecomunicações" onclick="filerResults('Telecomunicações')">Telecomunicações</p>
+                    <p class="list-group-item" id="Veterinários" onclick="filerResults('Veterinários')">Veterinários</p>
                 </div>
             </div>
             <!-- ======================================================================= -->
-    
-            <!-- === Espaçamento == -->
-            <div class ="col-lg-1 vertical-div">
-                <div class="vertical"></div>
-            </div> 
-            <!-- ================== -->
             
-            <div class="col-lg-9">
+            <div class="col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-9">
                 <!-- === Resultados da Pesquisa == -->
                 <div class="row" id="results"></div>
                 <!-- ============================= -->
                 
                 <!-- === Carregar Mais Resultados == -->
                 <div class="row justify-content-center" id="loadMore" style="display: none;">
-                    <button class="btn col-lg-2" onclick="loadMore()">Load More</button>
+                    <button class="btn col-lg-2 search-button" onclick="loadMore()">Load More</button>
                 </div>
                 <!-- ============================= -->
-
             </div><!-- /.col-lg-9 -->
-            
-
         </div><!-- /.row -->
-        
-
   </div><!-- /.container -->
   
   <!-- Footer -->

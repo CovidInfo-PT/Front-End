@@ -204,7 +204,7 @@ function loadSearch(){
     results.style.display = 'none';
     results.innerHTML = '';
     results.style.display = '';
-    selected_id -1;
+    selected_id = -1;
     
     county_coords = selected_county[1];
 
@@ -264,18 +264,21 @@ function loadMore(){
     else{
         document.getElementById('loadMore').style.display = 'none';
         var temp = loadedResults + n_results;
-        for(c=0; c < companies.length; c++){
+        console.log(loadedResults);
+        for(c=loadedResults; c < companies.length; c++){
             for(l = 0; l < companies[c]["categorias"].length; l++){
-                if(loadedResults >= temp){
-                    break;
-                }
                 if(filters.indexOf(companies[c]["categorias"][l]) >= 0){
                     results.appendChild(generate_card(companies[c], loadedResults));
                     loadedResults++;
+                    break;
                 }
+                
+            }
+            if(loadedResults >= temp){
+                break;
             } 
         }
-        if(loadedResults >= temp){
+        if(loadedResults >= temp && c < companies.length -1){
             document.getElementById('loadMore').style.display = '';
         }
     }

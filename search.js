@@ -42,7 +42,7 @@ function getCounty(selected_district){
     document.getElementById("districts").innerText = selected_district;
 
     var select = document.getElementById('counties_items');
-    select.disabled = "true";
+    document.getElementById('counties').disabled = true;
 
     $.ajax({
         url: api_url+"counties_by_distric?district="+selected_district, 
@@ -61,7 +61,7 @@ function getCounty(selected_district){
                 select.appendChild(li);
             });
 
-            select.removeAttribute("disabled");
+            document.getElementById('counties').removeAttribute("disabled");
         }
     });
 }

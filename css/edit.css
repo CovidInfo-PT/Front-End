@@ -48,6 +48,29 @@
 /* ! CSS ! */
 
 
+.nav-item {
+  font-size: 1.5rem;
+  color: #707070;
+  padding-left: 80px;
+}
+
+.nav-link {
+  color: #707070;
+}
+
+.nav-link:hover {
+  color: #4a4a4a;
+}
+
+.navbar-toggler-icon {
+  background-image: url(../img/bars-solid.svg)!important;
+}
+
+body {
+  padding-top: 0!important;
+}
+
+
  /* ----------- PAGINA DE INFORMAÇÃO ---------------- */
 
 #main_logo {
@@ -75,6 +98,8 @@ p{
   font-weight: 100;
   font-size:1.75rem;
   max-width: 350px;
+  background-color: #9CB0F5;
+  color:white;
 }
 
 .section {
@@ -137,7 +162,7 @@ i.fa {
 #aberto {
   width: 260%;
   right: -750px;
-  top: -520px
+  top: -470px
 }
 
 #download {
@@ -155,6 +180,80 @@ i.fa {
   display: none;
 }
 
+.tablet_view {
+  display: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+#final_logo {
+  width:40%;
+}
+
+.index_light_text{
+  text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+
+  #download {
+    padding-top: 100px;
+    padding-bottom: 200px;
+  }
+
+  .tablet_view{
+    display: block;
+  }
+
+  .web_view{
+    display:none;
+  }
+
+  .mobile_view {
+    display: none;
+  }
+
+  #video_id {
+    padding-top:0!important;
+    padding-bottom: 0!important;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  #video {
+    padding-top:0!important;
+    padding-bottom: 0!important;  
+  }
+
+  #iframe {
+    width: 100%;
+  }
+
+  #aberto {
+    width: 140%;
+    top:-300px;
+    bottom:auto;
+    left:auto;
+    right:-450px;
+  }
+
+  #download_image {
+    position: relative;
+    width: 60%;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    right:auto;
+  }
+
+  #final_logo {
+    width:80%;
+  }
+
+}
+
 @media only screen and (max-width: 768px) {
   
   .big_image {
@@ -163,9 +262,9 @@ i.fa {
 
   #aberto {
     width: 190%;
-    top:-150px;
+    top:-80px;
     bottom:-100px;
-    left:-170px;
+    left:-140px;
     right:auto;
   }
 
@@ -180,6 +279,10 @@ i.fa {
   .web_view {
     display: none;
 
+  }
+
+  .tablet_view {
+    display: none;
   }
 
   .mobile_view {
@@ -228,6 +331,16 @@ i.fa {
   .index_light_text {
     padding-top: 0!important;
   }
+  
+  .section {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  #final_logo {
+    width:40%;
+  }
+  
 }
 
  /* ----------- PAGINA DE PESQUISA ---------------- */
@@ -606,6 +719,7 @@ h1{
     max-width: 100%;
   }
 
+
 }
 
 /* ! ============ col-sm ================================================================== */
@@ -640,6 +754,8 @@ h1{
   #main_logo {
     max-width: 100%;
   }
+
+
 }
 
 

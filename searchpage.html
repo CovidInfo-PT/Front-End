@@ -15,6 +15,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/edit.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   
 </head>
 
@@ -43,30 +44,45 @@
 
     <!-- Page Content -->
     <div>
-        <img id="bannerimage" src='img/versao_pc.png'></img>
+        
+    </div>
+    <div class="section" style="margin-left: 10%!important;margin-right: 10%!important;">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-5 d-flex align-items-center">
+            <div style="font-weight: bold; font-size: 300%;color: #707070;line-height: 60px;" >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet.
+            </div>
+            
+        </div>
+        <div id="main_search_image" class="col-12 col-md-6 col-lg-6;" >
+            <img id="bannerimage" src='img/versao_pc.png'></img>
+        </div>
+    </div>
     </div>
 
+
     <!-- =============================== Filtros =============================== -->
-    <div class="search-bar row justify-content-center">
+    <div class="search-bar row justify-content-between row">
+        
             <!-- Districts dropdown --> 
-            <div class="dropdown col-xl-4 col-lg-4 col-md-11 col-sm-11 col-11 selectWrapper">
-                <button id="districts" disabled class="btn dropdown-toggle selectBox" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div id="districts_wrapper" class="search_field dropdown col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
+                <button id="districts" disabled class="btn dropdown-toggle selectBox d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Distritos
                 </button>
                 <ul id="districts_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
             </div>
 
             <!-- Counties dropdown --> 
-            <div class="dropdown offset-xl-1 col-xl-4 offset-lg-1 col-lg-4 col-md-11 col-sm-11 col-11 selectWrapper">
-                <button id="counties" disabled class="selectBox btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div id="counties_wrapper" class="search_field dropdown col-xl-4  col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
+                <button id="counties" disabled class="selectBox btn dropdown-toggle  d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Concelhos
                 </button>
                 <ul id="counties_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
             </div>
 
             <!-- Filters dropdown --> 
-            <div class="dropdown col-md-11 col-sm-11 col-11 selectWrapper dropdown-filter">
-                <button class="selectBox btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown col-md-12 col-sm-12 col-12 selectWrapper dropdown-filter">
+                <button id="filtros" class="selectBox btn dropdown-toggle d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filtros
                 </button>
                 <ul id="filter_dropdown" class="dropdown-menu scrollable-menu" role="menu">
@@ -110,9 +126,9 @@
                 </ul>
             </div>
 
-            <div class="offset-xl-1 col-xl-1 offset-lg-1 col-lg-1 col-md-2 col-sm-2 col-2">
+            <div id="button_box" class="search_field col-xl-2  col-lg-2 col-md-12 col-sm-12 col-12" >
                 <button id="search_button" class="btn search-button" onclick="loadSearch()" disabled>
-                    >
+                    <i id="search_button_style" class="fa fa-angle-right fa-2x"></i>
                 </button>
             </div>
     </div>
@@ -160,9 +176,51 @@
   </div><!-- /.container -->
   
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+  <footer style="background-color: white;margin-top: 200px;">
+    <div class="footer-above">
+      <div class="section" style="margin-left: 10%;margin-right: 10%;">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12" id="footer_title" style="text-align: center;">
+            <div style="display: inline-block;">
+              <div class="row">
+                <div class="col-12">
+                  <img id="final_logo" src="img/proximoxcasa.png">
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <i class="fa fa-facebook fa-lg button"></i>
+                  <i class="fa fa-twitter fa-lg button"></i>
+                  <i class="fa fa-instagram fa-lg button"></i>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+            <p>CONTACTOS</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mattis lacus leo</p>
+            <p>email@proximo.pt </p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+            <p>LIGAÇÕES ÚTEIS</p>
+            <p>Informação sobre a iniciativa</p>
+            <p>Website (pesquisa)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-below">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12" style="text-align: center;padding-top: 30px;padding-bottom: 30px;">
+            <p id="copyright_text">© 2020 - Todos os direitos reservados. proxi_mo</p>
+
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 

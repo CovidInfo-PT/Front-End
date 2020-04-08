@@ -22,8 +22,8 @@
 		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.woff') format('woff'),
 		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.ttf') format('truetype'),
 		 url('https://litmus.com/fonts/Emails/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
-	font-weight: bold;
-	font-style: bold;
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
@@ -37,17 +37,48 @@
 	font-style: normal;
 }
 
-@font-face {
-  font-family: 'Proxima Nova Th';
-  src: url('ProximaNovaT-Thin.woff2') format('woff2'),
-      url('ProximaNovaT-Thin.woff') format('woff');
-  font-weight: 100;
-  font-style: normal;
-}
-
 /* ! CSS ! */
 
+/* ! =================================== General Settings ========================================== */
+html {
+  height: 100%;
+}
 
+body {
+  font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
+  background-color:#f1f4fa;
+}
+
+h1{
+  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+}
+
+.section {
+  padding-top: 30px ;
+  padding-bottom: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.container-fluid {
+  padding-left: 0px  !important;
+  padding-right: 0px !important;
+  width: 80%;
+  left: 10%;
+}
+.container-fluid .row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+/* ! ======================================================================================== */
+
+/* ! =================================== Nav bar ========================================== */
+.navbar{
+  z-index: 2;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+}
 .nav-item {
   font-size: 1.5rem;
   color: #707070;
@@ -66,337 +97,14 @@
   background-image: url(../img/bars-solid.svg)!important;
 }
 
-body {
-  padding-top: 0!important;
+.logo-image{
+  max-width: 150px;
 }
 
-#districts {
-  font-size: 1.3rem;
-  font-weight: normal;
-}
+/* ! ======================================================================================== */
 
-#counties {
-  font-size: 1.3rem;
-  font-weight: normal;
-}
-
-#filtros {
-  font-size: 1.3rem;
-  font-weight: normal;
-  color: #707070;
-}
-
-.dropdown-toggle::after {
-  margin-top: 10px;
-}
-
-#search_button_style {
-  padding-left: 15px;
-  padding-top: 4px;
-  background-color: #879df2;
-  color: white;
-  box-shadow: none;
-}
-
- /* ----------- PAGINA DE INFORMAÇÃO ---------------- */
-
-#main_logo {
-  max-width: 80%;
-}
-
-#objetivos {
-  max-width: 100%;
-}
-
-p{
-  color: #707070;
-  line-height: 170%;
-}
-
-.index_buttons {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
-  padding: 20px;
-  border-radius: 60px;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 40px;
-  padding-right: 40px;
-  font-weight: 100;
-  font-size:1.75rem;
-  max-width: 350px;
-  background-color: #9CB0F5;
-  color:white;
-}
-.index_buttons :hover {
-
-}
-
-.section {
-  padding-top: 30px ;
-  padding-bottom: 30px;
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
-.index_section_title {
-  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  color: #707070;
-  font-size: 3.5rem;
-}
-
-.index_light_text {
-  font-family: 'Proxima Nova Th', Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-style: normal;
-  color: #707070;
-  font-size: 1.5rem;
-  text-align: left;
-  line-height: 170%;
-  margin: auto;
-}
-
-#iframe {
-  border-radius: 50px !important;
-  width: 80%;
-  height: calc(width * 0.5625);
-}
-
-#video_id {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-i.fa {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  border-radius: 70px;
-  box-shadow: 0 5px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 0.8rem;
-  vertical-align: middle;
-
-}
-
-#copyright_text {
-  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-
-.big_image {
-  z-index: 1;
-  position:absolute;
-}
-
-#aberto {
-  width: 260%;
-  right: -750px;
-  top: -470px
-}
-
-#download {
-  padding-top: 200px;
-  padding-bottom: 400px;
-}
-
-#download_image {
-  width: 170%;
-  left: -350px;
-  top:-350px
-}
-
-.mobile_view {
-  display: none;
-}
-
-.tablet_view {
-  display: none;
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-#final_logo {
-  width:40%;
-}
-
-.index_light_text{
-  text-align: left;
-}
-
-@media only screen and (max-width: 992px) {
-
-  #download {
-    padding-top: 100px;
-    padding-bottom: 200px;
-  }
-
-  .tablet_view{
-    display: block;
-  }
-
-  .web_view{
-    display:none;
-  }
-
-  .mobile_view {
-    display: none;
-  }
-
-  #video_id {
-    padding-top:0!important;
-    padding-bottom: 0!important;
-    margin-top: 10%;
-    margin-bottom: 10%;
-  }
-
-  #video {
-    padding-top:0!important;
-    padding-bottom: 0!important;  
-  }
-
-  #iframe {
-    width: 100%;
-  }
-
-  #aberto {
-    width: 140%;
-    top:-300px;
-    bottom:auto;
-    left:auto;
-    right:-450px;
-  }
-
-  #download_image {
-    position: relative;
-    width: 60%;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    right:auto;
-  }
-
-  #final_logo {
-    width:80%;
-  }
-
-}
-
-@media only screen and (max-width: 768px) {
-  
-  .big_image {
-    position: relative;
-  }
-
-  #aberto {
-    width: 190%;
-    top:-80px;
-    bottom:-100px;
-    left:-140px;
-    right:auto;
-  }
-
-  #download_image {
-    width: 100%;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    right:auto;
-  }
-
-  .web_view {
-    display: none;
-
-  }
-
-  .tablet_view {
-    display: none;
-  }
-
-  .mobile_view {
-    display: block;
-  }
-
-  .aberto_wraper_mobile {
-    max-height: 450px;
-  }
-
-  .objetivo_text {
-    font-size: 2.5rem;
-  }
-
-  #download {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  #video_id {
-    padding-top: 0!important;
-    margin-left: 0!important;
-    margin-right: 0!important;
-
-  }
-
-  #video {
-    padding-top:0!important;
-    padding-bottom: 0!important;  
-  }
-
-  #iframe {
-    width: 100%;
-    border-radius: 0!important;
-  }
-
-  #objetivos {
-    padding-bottom: 100px;
-  }
-
-  #footer_title {
-    padding-top:20px;
-    padding-bottom: 30px;
-  }
-
-  .index_light_text {
-    padding-top: 0!important;
-  }
-  
-  .section {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  
-  #final_logo {
-    width:40%;
-  }
-  
-}
-
- /* ----------- PAGINA DE PESQUISA ---------------- */
-
-html {
-  height: 100%;
-}
-
-body {
-  font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
-  padding-top: 56px;
-  background-color:#f1f4fa;
-}
-
-body {
-  font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
-  padding-top: 56px;
-  background-color:#f1f4fa;
-}
-
-
-h1{
-  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
-}
-
-#bannerimage {
+/* ! =================================== Banner ========================================== */
+.bannerimage {
   width: auto;
   height: 800px;
   background-position-x: right;
@@ -408,66 +116,75 @@ h1{
   margin-left: auto;
   margin-top: -250px;
 }
+/* ! ======================================================================================== */
 
-.logo{
-  height:30px;
-  margin-left:120px;
-}
+/* ! =================================== Icons ========================================== */
+i.fa {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 70px;
+  box-shadow: 0 5px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 0.7rem;
+  vertical-align: middle;
 
-.container-fluid {
-  padding-left: 0px  !important;
-  padding-right: 0px !important;
-  width: 80%;
-  left: 10%;
 }
-.container-fluid .row {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
+/* ! ======================================================================================== */
 
-#button_box {
-  /* margin-top: 5px;
-  padding-bottom: 5px; */
-  text-align: right;
-  margin-right: 5px;
-  padding-right: 0!important;
+/* ! =================================== Footer ========================================== */
+.footer_title {
+  padding-top:20px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
-#districts_wrapper {
-  margin-left:16px
+.final_logo {
+  width:40%;
+  padding-bottom: 20px;
 }
+
+.copyright_text {
+  font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
+  color: #707070;
+  line-height: 170%;
+}
+
+.footer-text{
+  color: #707070;
+  line-height: 170%;
+}
+/* ! ======================================================================================== */
 
 /* ! =================================== Search bar ========================================== */
-
 .search-bar{
   z-index: 7;
-  height:55px;
+  height: 70px;
   border-radius: 100px;
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
   background-color: #9CB0F5;
   align-items: center;
   position: sticky;
-  padding-top:9px;
-  padding-bottom: 20px;
-  height: 70px;
   left: 20%;
   width:60%;
+  padding-top: 9px;
+  padding-bottom: 20px;
 }
+/* ! ======================================================================================== */
 
 /* ! ====================================== DropDown ====================================== */
 .selectWrapper{
   border-radius:36px;
   background:white;
+  margin-left: 16px;
 }
 
 .selectBox{
-  font-size: normal;
-  font-weight: bold;
   width: 100%;
-  width:flex;
   height:40px;
   border:0px;
   outline:none;
+  font-size: 1.1rem;
+  font-weight: normal;
 }
 
 .dropdown-menu {
@@ -484,11 +201,28 @@ h1{
   display: none;
 }
 
+.dropdown-toggle::after {
+  margin-top: 10px;
+}
+
 /* ! ====================================================================================== */
 
 /* ! ======================================= Search Button ======================================= */
+.button_box {
+  text-align: right;
+  margin-right: 5px;
+  padding-right: 0!important;
+}
 
+.search_button {
+  padding-left: 15px !important;
+  padding-top: 4px !important;
+  background-color: #f1f4fa;
+  color: #879df2;
+  box-shadow: none;
+}
 /* ! ====================================================================================== */
+
 /* ! ===================================== Cards ========================================== */
 .card {
   overflow: auto;
@@ -501,8 +235,6 @@ h1{
   border-radius: 10px;
   border-color:#f1f4fa;
   background-color: #f1f4fa;
-  font-size: larger;
-  font-weight: 900;
 }
 
 .card:hover{
@@ -520,11 +252,11 @@ h1{
 
 .card-title{
   margin-top:50px;
+  color: #383838;
 }
 
 .card-text{
-  font-size: large;
-  font-weight: 900;
+  color : #707070;
 }
 
 .card-holder{
@@ -532,7 +264,6 @@ h1{
   padding-top:50px;
   margin:10px;
   margin-top:-30px;
-  /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);  */
   border-radius: 30px;
   background-color: white;
   z-index:4;
@@ -552,31 +283,30 @@ h1{
 }
 /* ! ====================================================================================== */
 
-
+/* ! ================================= Details Card ============================================ */
 .detail-card{
   overflow: auto;
   display: inline-block;
   width: 100%;
-  max-height: 30rem;
+  max-height: 15rem;
   min-height: 5rem;
   padding: 15px;
   margin:30px;
   border-radius: 10px;
   border-color:#9CB0F5;
   background-color: #9CB0F5;
-  color:#f1f4fa;
-  font-size: larger;
-  font-weight: 900;
+  color:#f1f4fa
 }
 .detail-card:hover{
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
 .detail-title{
-
-  color:#f1f4fa
+  font-size: medium;
+  font-weight: 900;
+  color: #f1f4fa;
 }
-
+/* ! ======================================================================================== */
 
 /* ! ==================================== Side-Filters ========================================== */
 .select-filters{
@@ -600,26 +330,24 @@ h1{
 }
 
 .list-group-item:hover{
-  color: #383838;
-  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15); */
+  color: black;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
 .list-group-item-clicked{
   border-color:#9CB0F5;
   background-color: #9CB0F5;
-  color: #ffffff;
-  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15); */
+  color: #f1f4fa;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
 }
-
 .list-group-item-clicked:hover{
-  border-color:#9CB0F5;
-  background-color: #9CB0F5;
-  color: #ffffff;
-  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15); */
+  color: #f1f4fa;
 }
 
-/* ! ==================================== Load More Buttob ========================================== */
+/* ! ======================================================================================== */
+
+/* ! ==================================== Load More Button ========================================== */
 .load-button{
   display: inline-block;
   border-radius: 100px;
@@ -630,17 +358,6 @@ h1{
   color:#9CB0F5;
   font-size: larger;
   font-weight: 900;
-}
-/* ! ====================================================================================== */
-
-/* ! ==================================== Footer ========================================== */
-.footer{
-  height:100px;
-  background-color:#cccbcb;
-  margin-top:100px;
-  display: flex;
-  align-items: center;
-  text-align: center;
 }
 /* ! ====================================================================================== */
 
@@ -666,19 +383,26 @@ h1{
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(133, 154, 230); 
 }
-
 /* ! ====================================================================================== */
 
-
-
-/* ! ============ col-lg ================================================================== */
+/* ! ============ col-lg-settings ================================================================== */
 @media only screen and (max-width: 1200px) {
-  #bannerimage {
+  .bannerimage{
     height: 600px;
   }
 
+  .detail-card{
+    max-height: 30rem;
+    min-height: 5rem;
+  }
+
   .selectBox{
-    font-size: small;
+    font-size: 0.9rem;
+    padding-top: 10px;
+  }
+  
+  .dropdown-toggle::after {
+    margin-top: 7px;
   }
 
   .list-group-item{
@@ -693,58 +417,51 @@ h1{
     display: none;
   }
 
-  #main_logo {
-    max-width: 80%;
+  .dropdown-filter{
+    display: none;
   }
 
 }
+/* ! =============================================================================================== */
 
-/* ! ============ col-md ================================================================== */
+/* ! ============ col-md-settings ================================================================== */
 @media only screen and (max-width: 992px) {
   .selectWrapper{
-    margin-left: 0%;
+    margin-left: 0px;
+    margin-bottom: 5px;
+  }
+
+  .selectBox{
+    font-size: 1.3rem;
+    padding-top: 5px;
+  }
+
+  .dropdown-toggle::after {
+    margin-top: 10px;
   }
   
+  .button_box {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+
   .search-button{
     margin-left: 0%;
   }
 
   .dropdown-filter{
     display: inline;
+    margin-bottom: 0px;
   }
 
- 
   .search-bar{
-    z-index: 7;
-    height:200px;
-    border-radius: 30px;
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    height: 200px;
     background-color: #9CB0F5;
-    align-items: center;
-    position: sticky;
-    left: 20%;
-    width:60%;
+    border-radius: 30px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px
-  }
-
-  #button_box {
-    /* margin-top: 5px;
-    padding-bottom: 5px; */
-    text-align: center;
-  }
-
-  #districts_wrapper {
-    margin-left:0!important
-  }
-
-  #counties_wrapper {
-
-  }
-
-  .search_field {
-    margin-bottom: 5px;
+    padding-top: 20px;
   }
 
   .select-filters{
@@ -778,14 +495,14 @@ h1{
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
   }
 
-  #main_logo {
-    max-width: 100%;
+  .final_logo {
+    width:80%;
+    padding-bottom: 20px;
   }
-
-
 }
+/* ! =============================================================================================== */
 
-/* ! ============ col-sm ================================================================== */
+/* ! ============ col-sm-settings ================================================================== */
 @media only screen and (max-width: 768px) {
   .selectWrapper{
     margin-left: 0%;
@@ -813,44 +530,10 @@ h1{
     margin-bottom:-50px;
     margin-left:-20px;
   }
-
-  #main_logo {
-    max-width: 100%;
-  }
-
-  .search-bar{
-    z-index: 7;
-    height:200px;
-    border-radius: 30px;
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    background-color: #9CB0F5;
-    align-items: center;
-    position: sticky;
-    left: 20%;
-    width:60%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px
-  }
-
-  #button_box {
-    text-align: center;
-  }
-
-  #districts_wrapper {
-    margin-left:0!important
-  }
-
-  #counties_wrapper {
-
-  }
-  #main_search_image{
-    display: none;
-  }
-
 }
+/* ! =============================================================================================== */
 
-
+/* ! ============ col-xs-settings ================================================================== */
 @media only screen and (max-width: 768px) {
   .selectWrapper{
     margin-left: 0%;
@@ -864,11 +547,4 @@ h1{
     left: 10%;
     width:80%;
   }
-
-  #main_logo {
-    max-width: 100%;
-  }
 }
-
-
-

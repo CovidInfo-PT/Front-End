@@ -10,8 +10,6 @@ var companies = [];
 
 var days = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
 
-
-
 function getDistricts(){
     $.ajax({
         "url": api_url+"all_districts", 
@@ -88,7 +86,7 @@ function generate_card(company, id){
         img.src = company["images"]["logo"];
     }
     else{
-        img.src = "img/bars-solid.svg"
+        img.src = "favicon/android-chrome-512x512.png"
     }
     img.alt = "Logo of the Company";
     
@@ -146,8 +144,8 @@ function generate_details(id){
     row.classList.add("row");
 
     var info1_div = document.createElement("div");
-    info1_div.classList.add("col-lg-6");
-    info1_div.classList.add("col-md-12");
+    info1_div.classList.add("col-xl-6");
+    info1_div.classList.add("col-lg-12");
     info1_div.classList.add("details-card-section");
 
     var morada = document.createElement("span");
@@ -175,11 +173,11 @@ function generate_details(id){
     info1_div.appendChild(contacto);
 
     var entrega = document.createElement("span");
-    entrega.innerHTML = "<p> Entregas ao Domicílio: <br/>";
+    entrega.innerHTML = "<p><b> Entregas ao Domicílio: </b><br/>";
     entrega.classList.add("col-xl-12");
     entrega.classList.add("col-lg-12");
     entrega.classList.add("detail-title");
-    entrega.innerHTML += companies["home_delivery"] ? "<b>Sim</b></p>" : "<b>Não</b></p>";
+    entrega.innerHTML += companies["home_delivery"] ? "Sim</p>" : "Não</p>";
     info1_div.appendChild(entrega);
 
     var social = document.createElement("span");
@@ -241,8 +239,8 @@ function generate_details(id){
 
 
     var info2_div = document.createElement("div");
-    info2_div.classList.add("col-lg-6");
-    info2_div.classList.add("col-md-12");
+    info2_div.classList.add("col-xl-6");
+    info2_div.classList.add("col-lg-12");
     info2_div.classList.add("details-card-section");
 
     generate_schedule(id, info2_div);
@@ -276,7 +274,7 @@ function loadSearch(){
             companies_keys.forEach(key => {
                companies.push(data["companies"][key]);
             });
-
+            console.log(data["companies"]);
             if(companies.length > n_results){
                 for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
                     results.appendChild(generate_card(companies[loadedResults], loadedResults));
@@ -363,17 +361,20 @@ function loadDetails(id){
     
     var results = document.getElementById('results');
     var childnodes = results.childNodes;
-
+   
     if(selected_id != -1){
         var details = document.getElementById('details');
         details.parentNode.removeChild(details);
         childnodes[selected_id].childNodes[1].classList.remove("card-clicked");
+        childnodes[selected_id].childNodes[1].childNodes[0].childNodes[0].classList.remove("card-title-clicked");
+        childnodes[selected_id].childNodes[1].childNodes[0].childNodes[1].classList.remove("card-text-clicked");
     }
 
     if(selected_id != id){
         selected_id = id;
         childnodes[selected_id].childNodes[1].classList.add("card-clicked");
-        
+        childnodes[selected_id].childNodes[1].childNodes[0].childNodes[0].classList.add("card-title-clicked");
+        childnodes[selected_id].childNodes[1].childNodes[0].childNodes[1].classList.add("card-text-clicked");
         if(document.getElementsByTagName('body')[0].clientWidth < 992){
             for(i = 0; i < childnodes.length; i++){
                 if(id == childnodes[i].id){

@@ -24,8 +24,8 @@
 
   <!-- Nav Bar -->
 
-  <nav class="navbar navbar-expand-xl " style="z-index: 2;padding-left: 10%;padding-right: 10%;">
-    <a class="navbar-brand" href="#"><img style="max-width: 150px;" src="img/proximoxcasa.png"></a>
+  <nav class="navbar navbar-expand-xl " style="z-index: 2;padding-left: 10%;padding-right: 10%;padding-top: 30px;">
+    <a class="navbar-brand" href="#"><img style="max-width: 150px;" src="img/proximo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -48,18 +48,18 @@
   <!-- Page Content -->
 
   <header class="masthead d-flex" id="head">
-    <div class="container text-left" style="margin-top: 10%;margin-bottom: 10%; margin-left: 10%;margin-right: 10%;">
+    <div class="container text-left" style="margin-top: 10%;margin-bottom: 10%; margin-left: 10%;margin-right: 10%;padding-left: 0!important;padding-right: 0!important;">
       <div class="row">
 
         <!-- WEB VIEW -->
 
         <div class="col-sm-12 col-md-6 col-lg-6 web_view">
-          <img id="main_logo" class="responsive" src="img/proximoxcasa.png">
+          <img id="main_logo" class="responsive" src="img/proximo.png">
           <h3 class="mb-5">
             <p style="margin-top: 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
               condimentum sapien. Nam commodo felis.</p>
           </h3>
-          <p style="background-color: #9CB0F5;color:white;" class="index_buttons button"><b>ir para o website</b></p>
+          <p class="index_buttons button"><b>ir para o website</b></p>
         </div>
         <div class="col-sm-12 ccol-md-6 col-lg-6 web_view">
           <img id="aberto" class="big_image" src="img/aberto.png">
@@ -154,20 +154,20 @@
                 Download
               </div>
               <h3>
-                <p>Descarregue a aplicação para telemóvel</p>
+                <p>Brevemente!</p>
               </h3>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-12" style="margin-top: 20px;">
               <div
-                style="background-color: #9CB0F5;color:white;display: inline-block;padding-left: 20%;padding-right: 20%; "
-                class="index_buttons button"><b>Play store</b></div>
+                style="display: inline-block;padding-left: 20%;padding-right: 20%; "
+                class="disabled index_buttons button"><b>Play store</b></div>
             </div>
             <div class="col-lg-6 col-sm-6 col-12" style="margin-top: 20px;">
               <div
-                style="background-color: #9CB0F5;color:white;display: inline-block;padding-left: 20%;padding-right: 20%; "
-                class="index_buttons button"><b>App store</b></div>
+                style=" display: inline-block;padding-left: 20%;padding-right: 20%; "
+                class="disabled index_buttons button"><b>App store</b></div>
             </div>
           </div>
 
@@ -300,9 +300,13 @@
     function aspectratio169() {
       var mapElement = document.getElementById("iframe");
       mapElement.style.height = mapElement.offsetWidth * 0.5625 + 'px';
-      var horizontalCenter = Math.floor(window.innerWidth/2);
-      console.log(horizontalCenter);
-      console.log($("#aberto").innerWidth());
+      if (window.innerWidth > 500 && innerWidth < 767){
+        var window_width = window.innerWidth;
+        var image = document.getElementById('aberto');
+        image.style.left = Math.floor(window_width*0.156 -238)
+      }
+      // console.log(horizontalCenter);
+      // console.log($("#aberto").innerWidth());
     }
 
     

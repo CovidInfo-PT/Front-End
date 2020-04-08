@@ -289,14 +289,14 @@ i.fa {
   #head {
     height: calc(100vh - 90px);
   }
-
-
 }
+
+
 @media only screen and (max-width: 1200px) {
 .nav-item {
   padding-left: 0;
 }
-
+}
 
 @media only screen and (max-width: 992px) {
 

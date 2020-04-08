@@ -249,7 +249,22 @@ i.fa {
 
 }
 
+#aberto_croped {
+  width: 100%;
+}
 
+#app_download {
+  padding-top: 200px;
+}
+
+#head_container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
 
 @media (min-width: 1200px) and (max-width: 1357px) {
   .nav-item {
@@ -264,12 +279,22 @@ i.fa {
   .special_size {
     display: flex;
   }
+
+  #download {
+    padding-bottom: 200;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   #head {
     height: calc(100vh - 90px);
   }
+
+
+}
+@media only screen and (max-width: 1200px) {
+.nav-item {
+  padding-left: 0;
 }
 
 
@@ -280,6 +305,12 @@ i.fa {
     padding-bottom: 200px;
   }
   
+
+
+#app_download {
+  padding-top: 0;
+}
+
   .index_light_text{
     text-align: center;
   }
@@ -342,6 +373,11 @@ i.fa {
   
   .big_image {
     position: relative;
+  }
+
+  #head_container {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   #aberto {

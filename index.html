@@ -48,7 +48,7 @@
   <!-- Page Content -->
 
   <header class="masthead d-flex" id="head">
-    <div class="container text-left" style="margin-top: 10%;margin-bottom: 10%; margin-left: 10%;margin-right: 10%;padding-left: 0!important;padding-right: 0!important;">
+    <div id="head_container" class="container text-left" >
       <div class="row">
 
         <!-- WEB VIEW -->
@@ -68,14 +68,14 @@
         <!-- MOBILE VIEW -->
 
         <div class="col-sm-12 ccol-md-6 col-lg-6 mobile_view aberto_wraper_mobile">
-          <img id="aberto" class="big_image" src="img/aberto.png">
+          <img id="aberto_croped" class="big_image" src="img/aberto_croped.png">
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 mobile_view " style="text-align: center;">
+        <div class="col-sm-12 col-md-6 col-lg-6 mobile_view " style="text-align: center;margin-left: 10%;margin-right: 10%;">
           <h3 class="mb-5">
             <p style="margin-top: 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
               condimentum sapien. Nam commodo felis.</p>
           </h3>
-          <p style="background-color: #9CB0F5;color:white;" class="index_buttons button"><b>ir para o website</b></p>
+          <div style="display:inline-block;background-color: #9CB0F5;color:white;" class="index_buttons button"><b>ir para o website</b></div>
         </div>
 
         <!-- TABLET VIEW -->
@@ -134,12 +134,12 @@
         </div>
       </div>
   </section>
-  <section class="text-center" id="video" style="padding-top: 10%; padding-bottom: 10%;">
+  <!-- <section class="text-center" id="video" style="padding-top: 10%; padding-bottom: 10%;">
     <div class="section" id="video_id" style="margin-left: 10%; margin-right: 10%;">
       <iframe id="iframe" src="https://www.youtube.com/embed/Vbg81kc56FU" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-  </section>
+  </section> -->
   <section class="text-center" id="app_download">
     <div class="section" id="download" style="margin-left: 10%; margin-right: 10%;">
       <div class="row">
@@ -193,12 +193,12 @@
             <div class="col-lg-6 col-sm-6 col-12" style="margin-top: 20px;">
               <div
                 style="background-color: #9CB0F5;color:white;display: inline-block;padding-left: 20%;padding-right: 20%; "
-                class="index_buttons button"><b>Play store</b></div>
+                class="disabled index_buttons button"><b>Play store</b></div>
             </div>
             <div class="col-lg-6 col-sm-6 col-12" style="margin-top: 20px;">
               <div
                 style="background-color: #9CB0F5;color:white;display: inline-block;padding-left: 20%;padding-right: 20%; "
-                class="index_buttons button"><b>App store</b></div>
+                class="disabled index_buttons button"><b>App store</b></div>
             </div>
           </div>
 
@@ -298,12 +298,14 @@
     $(window).on('resize', aspectratio169);
 
     function aspectratio169() {
-      var mapElement = document.getElementById("iframe");
-      mapElement.style.height = mapElement.offsetWidth * 0.5625 + 'px';
+      // var mapElement = document.getElementById("iframe");
+      // mapElement.style.height = mapElement.offsetWidth * 0.5625 + 'px';
       if (window.innerWidth > 500 && innerWidth < 767){
         var window_width = window.innerWidth;
         var image = document.getElementById('aberto');
-        image.style.left = Math.floor(window_width*0.156 -238)
+        console.log("left -> " + image.style.left);  
+        image.style.left = Math.floor(window_width*0.156 - 238) + "px";
+        console.log("new left -> " + Math.floor(window_width*0.156 -500));
       }
       // console.log(horizontalCenter);
       // console.log($("#aberto").innerWidth());

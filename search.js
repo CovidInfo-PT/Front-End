@@ -2,7 +2,7 @@ var selected_id = -1;
 
 var loadedResults = 0;
 
-var n_results = 15;
+var n_results = 9;
 
 var api_url = "http://127.0.0.1:8000/";
 
@@ -10,16 +10,14 @@ var companies = [];
 
 var days = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
 
-var selected_county;
 
-var filters = [];
-
-window.onload = getDistricts;
 
 function getDistricts(){
     $.ajax({
-        url: api_url+"all_districts", 
+        "url": api_url+"all_districts", 
+        "Access-Control-Allow-Origin" : "*",
         success : function(data){
+
             var select = document.getElementById('districts_items');
 
             data["districts"].forEach(district => {
@@ -82,34 +80,43 @@ function generate_card(company, id){
     card_div.classList.add('col-xl-4');
     card_div.classList.add('col-lg-6');
     card_div.classList.add('col-sm-12');
-    card_div.onclick = function(){loadDetails(id)};
     card_div.id = id;
 
     var img = document.createElement('img');
     img.classList.add('card-img-top');
-    img.src = company["imagens"]["logotipo"];
+    if(company["images"]["logo"] != ''){
+        img.src = company["images"]["logo"];
+    }
+    else{
+        img.src = "img/bars-solid.svg"
+    }
     img.alt = "Logo of the Company";
     
     var info_div = document.createElement('div');
     info_div.classList.add("card");
+    info_div.onclick = function(){loadDetails(id)};
 
     var inside_div = document.createElement('div');
     inside_div.classList.add("card-body");
+    
 
     var title = document.createElement('h4');
     title.classList.add('card-title');
-    title.innerText = company["nome"];
+    title.innerText = company["name"];
 
     var text = document.createElement('p');
-    text.innerText = "Closed";
+    text.innerText = "Encerrado";
     var i = 0;
-    for(; i < company["horarios"][week_day].length; i++){
-        var work_times = company["horarios"][week_day][i].split("-")
+    for(; i < company["schedules"][week_day].length; i++){
+        if(company["schedules"][week_day] == "Encerrado"){
+            break;
+        }
+        var work_times = company["schedules"][week_day][i].split("-")
         var start_time = work_times[0].split(":");
         var end_time = work_times[1].split(":");
         if((start_time[0] < hour) || (start_time[0] == hour && start_time[1] <= minutes)){
             if((end_time[0] > hour) ||  (end_time[0] == hour && end_time[1] > minutes)){
-                text.innerText = company["horarios"][week_day][i];
+                text.innerText = company["schedules"][week_day][i];
                 break;
             }   
         }       
@@ -133,76 +140,118 @@ function generate_details(id){
     var card_div = document.createElement("div");
     card_div.classList.add("col-xl-12");
     card_div.classList.add("col-lg-12");
-    card_div.classList.add("detail-card");
+    card_div.classList.add("details-card");
     card_div.id = "details";
     var row = document.createElement("div");
     row.classList.add("row");
 
     var info1_div = document.createElement("div");
-    info1_div.classList.add("col-xl-4");
-    info1_div.classList.add("col-lg-5");
+    info1_div.classList.add("col-lg-6");
+    info1_div.classList.add("col-md-12");
+    info1_div.classList.add("details-card-section");
 
-    var row_info1 = document.createElement("div");
-    row_info1.classList.add("row");
-    
-    var morada = document.createElement("p");
-    morada.innerText = companies[id]["morada"];
-    morada.classList.add("col-lg-12");
-    morada.classList.add("col-xl-12");
-    row_info1.appendChild(morada);
+    var morada = document.createElement("span");
+    var text_morada = document.createElement("p");
+    text_morada.innerText = companies[id]["address"];
+    morada.appendChild(text_morada);
+    info1_div.appendChild(morada);    
 
-    companies[id]["contactos"]["telemovel"].forEach(contacto => {
-        var c = document.createElement("p");
-        c.innerText = contacto;
-        c.classList.add("col-xl-12");
-        c.classList.add("col-lg-12");
-        row_info1.appendChild(c);
+    var contacto = document.createElement("span");
+    var text = document.createElement("p");
+    text.innerHTML = "";
+    companies[id]["contacts"]["cellphone"].forEach(contacto => {
+        if(contacto != ""){
+            text.innerHTML += contacto;
+            text.innerHTML += "<br/>";
+        }
     });
+    companies[id]["contacts"]["telephone"].forEach(contacto => {
+        if(contacto != ""){
+            text.innerHTML += contacto;
+            text.innerHTML += "<br/>";
+        }
+    });
+    contacto.appendChild(text);
+    info1_div.appendChild(contacto);
 
-    var entrega = document.createElement("p");
-    entrega.innerText = "Entregas ao Domicílio: ";
+    var entrega = document.createElement("span");
+    entrega.innerHTML = "<p> Entregas ao Domicílio: <br/>";
     entrega.classList.add("col-xl-12");
     entrega.classList.add("col-lg-12");
     entrega.classList.add("detail-title");
-    var resultado_entrega = document.createElement("p");
-    resultado_entrega.classList.add("col-lg-12");
-    resultado_entrega.classList.add("col-xl-12");
-    resultado_entrega.innerText = companies["entrega_em_casa"] ? "Sim" : "Não";
+    entrega.innerHTML += companies["home_delivery"] ? "<b>Sim</b></p>" : "<b>Não</b></p>";
+    info1_div.appendChild(entrega);
 
-    row_info1.appendChild(entrega);
-    row_info1.appendChild(resultado_entrega);
+    var social = document.createElement("span");
+    var social_div = document.createElement("div");
+    social_div.classList.add("row");
+    var div_col = document.createElement("div");
+    div_col.classList.add("col-12")
+    if(companies[id]["social"]["facebook"] != ""){
+        var a = document.createElement("a");
+        var fb = document.createElement("i");
+        fb.classList.add("fa");
+        fb.classList.add("fa-facebook");
+        fb.classList.add("fa-lg");
+        fb.classList.add("button");
+        a.href = companies[id]["social"]["facebook"];
+        a.target = "_blank";
+        a.appendChild(fb)
+        div_col.appendChild(a);
+    }
+    if(companies[id]["social"]["instagram"] != ""){
+        var a = document.createElement("a");
+        var ig = document.createElement("i");
+        ig.classList.add("fa");
+        ig.classList.add("fa-instagram");
+        ig.classList.add("fa-lg");
+        ig.classList.add("button");
+        a.href = companies[id]["social"]["instagram"];
+        a.target = "_blank";
+        a.appendChild(fb)
+        div_col.appendChild(a);
+    }
+    if(companies[id]["social"]["twitter"] != ""){
+        var a = document.createElement("a");
+        var tt = document.createElement("i");
+        tt.classList.add("fa");
+        tt.classList.add("fa-instagram");
+        tt.classList.add("fa-lg");
+        tt.classList.add("button");
+        a.href = companies[id]["social"]["twitter"];
+        a.target = "_blank";
+        a.appendChild(tt)
+        div_col.appendChild(a);
+    }
+    if(companies[id]["gmaps_url"] != ""){
+        var a = document.createElement("a");
+        var gm = document.createElement("i");
+        gm.classList.add("fa");
+        gm.classList.add("fa-map-marker");
+        gm.classList.add("fa-lg");
+        gm.classList.add("button");
+        a.href = companies[id]["gmaps_url"];
+        a.target = "_blank";
+        a.appendChild(gm)
+        div_col.appendChild(a);
+    }
+    social_div.appendChild(div_col);
+    social.appendChild(social_div);
+    info1_div.appendChild(social);
 
-    info1_div.appendChild(row_info1);
 
     var info2_div = document.createElement("div");
-    info2_div.classList.add("col-xl-8");
-    info2_div.classList.add("col-lg-7");
+    info2_div.classList.add("col-lg-6");
+    info2_div.classList.add("col-md-12");
+    info2_div.classList.add("details-card-section");
 
-    var row_info2 = document.createElement("div");
-    row_info2.classList.add("row");
+    generate_schedule(id, info2_div);
 
-    var desc = document.createElement("p");
-    desc.innerText = "Descrição: "
-    desc.classList.add("col-lg-12");
-    desc.classList.add("col-xl-12");
-    desc.classList.add("detail-title");
-    var desc_text = document.createElement("p");
-    desc_text.classList.add("col-xl-12");
-    desc_text.classList.add("col-lg-12");
-    desc_text.innerText = companies[id]["notas"];
-
-    row_info2.appendChild(desc);
-    row_info2.appendChild(desc_text);
-
-    var site = document.createElement("a");
-    site.classList.add("col-lg-12");
-    site.classList.add("col-xl-12");
-    site.href =  companies[id]["redes_sociais"]["facebook"];
-    site.innerText = "Facebook";
-
-    row_info2.appendChild(site);
-
-    info2_div.appendChild(row_info2);
+    if(companies[id]["notes"] != ""){
+        var span = document.createElement("span");
+        span.innerHTML = "<p><b>Observações</b><br/>"+companies[id]["notes"]+ "</p>";
+        info2_div.appendChild(span);
+    }
 
     row.appendChild(info1_div);
     row.appendChild(info2_div);
@@ -218,44 +267,45 @@ function loadSearch(){
     results.style.display = '';
     selected_id = -1;
     
-    county_coords = selected_county[1];
+    county_coords = selected_county;
 
     $.ajax({
         url: api_url+"companies_by_location?geohash="+county_coords, 
         success : function(data){
-            if(data["companies"].length > n_results){
+            companies_keys = Object.keys(data["companies"]);
+            companies_keys.forEach(key => {
+               companies.push(data["companies"][key]);
+            });
+
+            if(companies.length > n_results){
                 for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
-                    results.appendChild(generate_card(data["companies"][loadedResults], loadedResults));
+                    results.appendChild(generate_card(companies[loadedResults], loadedResults));
                 }
                 document.getElementById('loadMore').style.display = '';
             }
             else{
-                for(loadedResults = 0; loadedResults < data["companies"].length; loadedResults ++){
-                    results.appendChild(generate_card(data["companies"][loadedResults], loadedResults));
+                for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
+                    results.appendChild(generate_card(companies[loadedResults], loadedResults));
                 }
             }
-            companies = data["companies"];
         }
     });
 
-    if(document.getElementsByTagName('body')[0].clientWidth > 992){
-        filter_list = document.getElementById("filters").childNodes;
-        
-        for(f = 0; f < filter_list.length; f++){
-            if(filter_list[f].classList != null){
-                filter_list[f].classList.remove("list-group-item-clicked");
-            }
+    filter_list = document.getElementById("filters").childNodes;
+    
+    for(f = 0; f < filter_list.length; f++){
+        if(filter_list[f].classList != null){
+            filter_list[f].classList.remove("list-group-item-clicked");
+        }
 
+    }
+    filter_list = document.getElementById("filter_dropdown").childNodes;
+    for(f = 0; f < filter_list.length; f++){
+        if(filter_list[f].childNodes.length > 0){
+            filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
         }
     }
-    else{
-        filter_list = document.getElementById("filter_dropdown").childNodes;
-        for(f = 0; f < filter_list.length; f++){
-            if(filter_list[f].childNodes.length > 0){
-                filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
-            }
-        }
-    }
+
     filters = [];
 }
 
@@ -287,8 +337,8 @@ function loadMore(){
         document.getElementById('loadMore').style.display = 'none';
         var temp = loadedResults + n_results;
         for(c=loadedResults; c < companies.length; c++){
-            for(l = 0; l < companies[c]["categorias"].length; l++){
-                if(filters.indexOf(companies[c]["categorias"][l]) >= 0){
+            for(l = 0; l < companies[c]["categories"].length; l++){
+                if(filters.indexOf(companies[c]["categories"][l]) >= 0){
                     results.appendChild(generate_card(companies[c], loadedResults));
                     loadedResults++;
                     break;
@@ -315,7 +365,7 @@ function loadDetails(id){
     var childnodes = results.childNodes;
 
     if(selected_id != -1){
-        var details = document.getElementById('details')
+        var details = document.getElementById('details');
         details.parentNode.removeChild(details);
         childnodes[selected_id].childNodes[1].classList.remove("card-clicked");
     }
@@ -327,7 +377,7 @@ function loadDetails(id){
         if(document.getElementsByTagName('body')[0].clientWidth < 992){
             for(i = 0; i < childnodes.length; i++){
                 if(id == childnodes[i].id){
-                    results.insertBefore(document.getElementById('results').appendChild(generate_details(id)),  childnodes[i+1]);
+                    results.insertBefore(generate_details(id),  childnodes[i+1]);
                     break;
                 }
             }
@@ -338,7 +388,7 @@ function loadDetails(id){
                     while(i%2 != 1){
                         i++;
                     }
-                    results.insertBefore(document.getElementById('results').appendChild(generate_details(id)),  childnodes[i+1]);
+                    results.insertBefore(generate_details(id),  childnodes[i+1]);
                     break;
                 }
             }
@@ -348,7 +398,7 @@ function loadDetails(id){
                     while(i%3 != 2){
                         i++;
                     }
-                    results.insertBefore(document.getElementById('results').appendChild(generate_details(id)),  childnodes[i+1]);
+                    results.insertBefore(generate_details(id),  childnodes[i+1]);
                     break;
                 }
             }
@@ -360,7 +410,7 @@ function loadDetails(id){
 }
 
 
-function filerResults(filter){
+function filterResults(filter){
     if( document.getElementById(filter).classList.length >= 2){
         document.getElementById(filter).classList.remove("list-group-item-clicked");
         var index = filters.indexOf(filter);
@@ -372,6 +422,20 @@ function filerResults(filter){
         document.getElementById(filter).classList.add("list-group-item-clicked");
         filters.push(filter);
     }
+    
+    filter_list = document.getElementById("filter_dropdown").childNodes;
+    for(f = 0; f < filter_list.length; f++){
+        
+        if(filter_list[f].childNodes.length > 0 && filter_list[f].childNodes[1].innerText.split(" ").join("_") == filter){
+            
+            if(filter_list[f].childNodes[1].classList.length >= 2){
+                filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
+            }
+            else{
+                filter_list[f].childNodes[1].classList.add("dropdown-item-clicked");
+            }
+        }
+    }
 
     results = document.getElementById('results');
     results.style.display = 'none';
@@ -396,11 +460,11 @@ function filerResults(filter){
     else{
         loadedResults = 0;
         for(c=0; c < companies.length; c++){
-            for(l = 0; l < companies[c]["categorias"].length; l++){
+            for(l = 0; l < companies[c]["categories"].length; l++){
                 if(loadedResults >= n_results){
                     break;
                 }
-                if(filters.indexOf(companies[c]["categorias"][l]) >= 0){
+                if(filters.indexOf(companies[c]["categories"][l]) >= 0){
                     results.appendChild(generate_card(companies[c], loadedResults));
                     loadedResults++;
                 }
@@ -414,65 +478,42 @@ function filerResults(filter){
 
 }
 
-function filterResultsDropdown(filter){
 
-    if( filter.classList.length >= 2){
-        filter.classList.remove("dropdown-item-clicked");
-        var index = filters.indexOf(filter.innerText.replace(" ", "_"));
-        if (index > -1) {
-            filters.splice(index, 1);
-        }
-    }
-    else{
-        filter.classList.add("dropdown-item-clicked");
-        filters.push(filter.innerText.replace(" ", "_"));
-    }
-
-    results = document.getElementById('results');
-    results.style.display = 'none';
-    results.innerHTML = '';
+function pageLoad(){
+    
+    companies = [];
+    loadedResults = 0;
     selected_id = -1;
- 
-    document.getElementById('loadMore').style.display = 'none';
+    filtres = [];
+    document.getElementById('districts').disabled = true;
+    document.getElementById('counties').disabled = true;
+    document.getElementById('search_button').disabled = true;
+    
 
-    if(filters.length == 0){
-        if(companies.length > n_results){
-            for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
-                results.appendChild(generate_card(companies[loadedResults], loadedResults));
-            }
-            document.getElementById('loadMore').style.display = '';
+    filter_list = document.getElementById("filters").childNodes;
+    
+    for(f = 0; f < filter_list.length; f++){
+        if(filter_list[f].classList != null){
+            filter_list[f].classList.remove("list-group-item-clicked");
         }
-        else{
-            for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
-                results.appendChild(generate_card(companies[loadedResults], loadedResults));
-            }
+
+    }
+    filter_list = document.getElementById("filter_dropdown").childNodes;
+    for(f = 0; f < filter_list.length; f++){
+        if(filter_list[f].childNodes.length > 0){
+            filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
         }
     }
-    else{
-        loadedResults = 0;
-        for(c=0; c < companies.length; c++){
-            for(l = 0; l < companies[c]["categorias"].length; l++){
-                if(loadedResults >= n_results){
-                    break;
-                }
-                if(filters.indexOf(companies[c]["categorias"][l]) >= 0){
-                    results.appendChild(generate_card(companies[c], loadedResults));
-                    loadedResults++;
-                }
-            } 
-        }
-        if(loadedResults >= n_results){
-            document.getElementById('loadMore').style.display = '';
-        }
-    }
-    results.style.display = '';
 
+    filters = [];
+
+    getDistricts();
 }
 
 window.addEventListener('resize', function(event){
     var details = document.getElementById('details');
 
-    if(  details != null){
+    if(details != null){
         details.parentNode.removeChild(details);
         
         var results = document.getElementById('results');
@@ -509,3 +550,66 @@ window.addEventListener('resize', function(event){
         }
     }
 });
+
+window.onload = pageLoad;
+
+
+function compareArrays(ar1, ar2){
+    if(ar1.length == ar2.length){
+        var index;
+        for(index = 0; index < ar1.length; index++){
+            if(ar1[index] != ar2[index])
+                return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+function generate_schedule(id, info2_div){
+    equal_days = [0, 0];
+    for(day = 1; day < days.length; day++){
+        if(compareArrays(companies[id]["schedules"][days[day]], companies[id]["schedules"][days[day-1]])){
+            equal_days[1] = day;
+        }
+        else{
+            var span = document.createElement("span");
+            if(equal_days[0] != equal_days[1]){
+                var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b><br/> | ";
+                companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
+                    text += schedule + " | "
+                });
+                text += "</p>";
+                span.innerHTML = text;
+            }
+            else{
+                var text = "<p><b>" + days[equal_days[0]] + "</b><br/> | ";
+                companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
+                    text += schedule + " | ";
+                });
+                text += "</p>";
+                span.innerHTML = text;
+            }
+            info2_div.appendChild(span);
+            equal_days = [day, day];
+        }
+    }
+    var span = document.createElement("span");
+    if(equal_days[0] != equal_days[1]){
+        var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b><br/> | ";
+                companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
+                    text += schedule + " | "
+                });
+                text += "</p>";
+                span.innerHTML = text;
+    }
+    else{
+        var text = "<p><b>" + days[equal_days[0]] + "</b><br/> | ";
+                companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
+                    text += schedule + " | ";
+                });
+                text += "</p>";
+                span.innerHTML = text;
+    }
+    info2_div.appendChild(span);
+}

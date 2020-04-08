@@ -240,6 +240,15 @@ i.fa {
   opacity: .65;
 }
 
+.navbar_item_disabled{
+
+  pointer-events:none;
+  opacity: .65;
+
+}
+
+
+
 @media (min-width: 1200px) and (max-width: 1357px) {
   .nav-item {
       padding-left: 35px;

@@ -24,7 +24,7 @@
 
   <!-- Nav Bar -->
 
-  <nav class="navbar navbar-expand-lg " style="z-index: 2;padding-left: 10%;padding-right: 10%;">
+  <nav class="navbar navbar-expand-xl " style="z-index: 2;padding-left: 10%;padding-right: 10%;">
     <a class="navbar-brand" href="#"><img style="max-width: 150px;" src="img/proximoxcasa.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,15 +101,31 @@
   <section class="text-center" id="objetivos" style="background-color:#f8f9fa;">
     <div class="section">
       <div class="row">
-        <div class="col-lg-6 col-sm-12 col-12">
-          <div class="row">
+        <div class="col-lg-6 col-sm-12 col-12 d-flex align-items-center">
+
+          <!-- NORMAL -->
+          <div class="row normal_size">
             <div class="col-lg-5 col-sm-5 col-6 index_section_title objetivo_text" style="margin: auto;">
               Objetivo
             </div>
-            <div class="col-lg-7 col-sm-7 col-6">
+            <div class="col-lg-7 col-sm-7 col-6 normal_size">
               <img id="objetivos" class="responsive" src="img/objetivos.png">
             </div>
           </div>
+
+          <!-- BETWEEN 991px AND 1715px -->
+
+          <div class="row special_size">
+            <div class="col-lg-12 col-sm-12 col-12 index_section_title objetivo_text" style="margin: auto;">
+              Objetivo
+            </div>
+          </div>
+          <div class="row special_size">
+            <div class="col-lg-12 col-sm-12 col-12">
+              <img id="objetivos" class="responsive" src="img/objetivos.png">
+            </div>
+          </div>
+
         </div>
         <div class="col-lg-6 col-sm-12 col-12 index_light_text" style="padding-top: 70px;">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mattis lacus leo, vel tempus lectus
@@ -284,7 +300,12 @@
     function aspectratio169() {
       var mapElement = document.getElementById("iframe");
       mapElement.style.height = mapElement.offsetWidth * 0.5625 + 'px';
+      var horizontalCenter = Math.floor(window.innerWidth/2);
+      console.log(horizontalCenter);
+      console.log($("#aberto").innerWidth());
     }
+
+    
   </script>
 
 </body>

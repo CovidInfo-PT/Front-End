@@ -17,13 +17,19 @@
   <link href="css/search.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
 <body>
   <!-- Nav Bar -->
-  <nav class="navbar navbar-expand-lg " style="z-index: 2;padding-left: 10%;padding-right: 10%;padding-top: 30px;">
-    <a class="navbar-brand" href="#"><img style="max-width: 150px;" src="img/proximo.png"></a>
-
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+      <img class="logo-image" src="img/proximo.png">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,9 +49,7 @@
   </nav>
 
     <!-- Page Content -->
-    <div>
-        
-    </div>
+
     <div class="section" style="margin-left: 10%!important;margin-right: 10%!important;">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
@@ -54,137 +58,139 @@
             </div>
             
         </div>
-        <div id="main_search_image" class="col-12 col-md-6 col-lg-6;" >
-            <img id="bannerimage" src='img/versao_pc.png'></img>
+        <div class="col-12 col-md-6 col-lg-6;" >
+            <img class="bannerimage" src='img/versao_pc.png'></img>
         </div>
     </div>
     </div>
 
 
-    <!-- =============================== Filtros =============================== -->
-    <div class="search-bar row justify-content-between row">
-        
-            <!-- Districts dropdown --> 
-            <div id="districts_wrapper" class="search_field dropdown col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
-                <button id="districts" disabled class="btn dropdown-toggle selectBox d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Distritos
-                </button>
-                <ul id="districts_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
-            </div>
-
-            <!-- Counties dropdown --> 
-            <div id="counties_wrapper" class="search_field dropdown col-xl-4  col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
-                <button id="counties" disabled class="selectBox btn dropdown-toggle  d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Concelhos
-                </button>
-                <ul id="counties_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
-            </div>
-
-            <!-- Filters dropdown --> 
-            <div class="dropdown col-md-12 col-sm-12 col-12 selectWrapper dropdown-filter">
-                <button id="filtros" class="selectBox btn dropdown-toggle d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filtros
-                </button>
-                <ul id="filter_dropdown" class="dropdown-menu scrollable-menu" role="menu">
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Saúde</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Farmácias</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Restaurantes</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Mercados</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Padarias</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Talhos</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Peixarias</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Bombas de Combustível</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Oficinas</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Bancos</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Serviços Administrativos</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" onclick="filterResultsDropdown(this)">Veterinários</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div id="button_box" class="search_field col-xl-2  col-lg-2 col-md-12 col-sm-12 col-12" >
-                <button id="search_button" class="btn search-button" onclick="loadSearch()" disabled>
-                    <i id="search_button_style" class="fa fa-angle-right fa-2x"></i>
-                </button>
-            </div>
+  <!-- =============================== Filtros =============================== -->
+  <div class="search-bar row justify-content-between">
+    <!-- Districts dropdown --> 
+    <div class="dropdown col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
+      <button id="districts" disabled class="btn dropdown-toggle selectBox d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Distritos
+      </button>
+      <ul id="districts_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
     </div>
-    <!-- ======================================================================= -->
-  
-  
-    <div class="results container-fluid">
-        <div class="row card-holder justify-content-center">
 
-            <!-- =============================== Filtros-Selecionaveis =============================== -->
-            <div class="col-xl-3 col-lg-3 select-filters">
-                <h4 class="select-title"><b>Serviços</b></h6>
-                <hr>
-                <div class="list-group" id="filters">
-                    <p class="list-group-item" id="Saúde" onclick="filerResults('Saúde')"><b>Saúde</b></p>
-                    <p class="list-group-item" id="Farmácias" onclick="filerResults('Farmácias')"><b>Farmácias</b></p>
-                    <p class="list-group-item" id="Restaurantes" onclick="filerResults('Restaurantes')"><b>Restaurantes</b></p>
-                    <p class="list-group-item" id="Mercados" onclick="filerResults('Mercados')"><b>Mercados</b></p>
-                    <p class="list-group-item" id="Padarias" onclick="filerResults('Padarias')"><b>Padarias</b></p>
-                    <p class="list-group-item" id="Talhos" onclick="filerResults('Talhos')"><b>Talhos</b></p>
-                    <p class="list-group-item" id="Peixarias" onclick="filerResults('Peixarias')"><b>Peixarias</b></p>
-                    <p class="list-group-item" id="Bombas_de_Combustível" onclick="filerResults('Bombas_de_Combustível')"><b>Bombas de Combustível</b></p>
-                    <p class="list-group-item" id="Gás" onclick="filerResults('Gás')"><b>Gás</b></p>
-                    <p class="list-group-item" id="Oficinas" onclick="filerResults('Oficinas')"><b>Oficinas</b></p>
-                    <p class="list-group-item" id="Bancos" onclick="filerResults('Bancos')"><b>Bancos</b></p>
-                    <p class="list-group-item" id="Serviços_Administrativos" onclick="filerResults('Serviços_Administrativos')"><b>Serviços Administrativos</b></p>
-                    <p class="list-group-item" id="Telecomunicações" onclick="filerResults('Telecomunicações')"><b>Telecomunicações</b></p>
-                    <p class="list-group-item" id="Veterinários" onclick="filerResults('Veterinários')"><b>Veterinários</b></p>
-                </div>
-            </div>
-            <!-- ======================================================================= -->
-            
-            <div class="col-xl-9 col-lg-9 col-md-12">
-                <!-- === Resultados da Pesquisa == -->
-                <div class="row" id="results"></div>
-                <!-- ============================= -->
-                
-                <!-- === Carregar Mais Resultados == -->
-                <div class="row justify-content-center" id="loadMore" style="display: none;">
-                    <button class="btn col-xl-4 col-lg-4 col-md-6 col-sm-10 col-12 load-button" onclick="loadMore()">Load More</button>
-                </div>
-                <!-- ============================= -->
-            </div><!-- /.col-lg-9 -->
-        </div><!-- /.row -->
+    <!-- Counties dropdown --> 
+    <div class="dropdown col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper">
+      <button id="counties" disabled class="selectBox btn dropdown-toggle d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Concelhos
+      </button>
+      <ul id="counties_items" class="dropdown-menu scrollable-menu" role="menu"></ul>
+    </div>
+
+    <!-- Filters dropdown --> 
+    <div class="dropdown col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 selectWrapper dropdown-filter">
+      <button class="selectBox btn dropdown-toggle d-flex justify-content-between" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filtros
+      </button>
+    <ul id="filter_dropdown" class="dropdown-menu scrollable-menu" role="menu">
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Saúde')">Saúde</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Farmácia')">Farmácias</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Restaurante')">Restaurantes</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Mercado')">Mercados</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Padaria')">Padarias</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Talho')">Talhos</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Peixaria')">Peixarias</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Bomba_de_Combustível')">Bombas de Combustível</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Oficina')">Oficinas</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Banco')">Bancos</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Serviço_Administrativo')">Serviços Administrativos</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Gás')">Gás</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Telecomunicações')">Telecomunicações</a>
+        </li>
+        <li>
+          <a class="dropdown-item" onclick="filterResults('Veterinário')">Veterinários</a>
+        </li>
+      </ul>
+    </div> 
+
+    <div class="button_box col-xl-2  col-lg-2 col-md-12 col-sm-12 col-12">
+      <button id="search_button" class="btn search-button" onclick="loadSearch()" disabled>
+          <i class="search_button fa fa-angle-right fa-2x "></i>
+      </button>
+    </div>
+  </div>
+  <!-- ======================================================================= -->
+
+  <div class="results container-fluid">
+    <div class="row card-holder justify-content-center">
+
+      <!-- =============================== Filtros-Selecionaveis =============================== -->
+      <div class="col-xl-3 col-lg-3 select-filters">
+        <h4 class="select-title"><b>Serviços</b></h6>
+        <hr>
+        <div class="list-group" id="filters">
+          <p class="list-group-item" id="Saúde" onclick="filterResults('Saúde')"><b>Saúde</b></p>
+          <p class="list-group-item" id="Farmácia" onclick="filterResults('Farmácia')"><b>Farmácias</b></p>
+          <p class="list-group-item" id="Restaurante" onclick="filterResults('Restaurante')"><b>Restaurantes</b></p>
+          <p class="list-group-item" id="Mercado" onclick="filterResults('Mercado')"><b>Mercados</b></p>
+          <p class="list-group-item" id="Padaria" onclick="filterResults('Padaria')"><b>Padarias</b></p>
+          <p class="list-group-item" id="Talho" onclick="filterResults('Talho')"><b>Talhos</b></p>
+          <p class="list-group-item" id="Peixaria" onclick="filterResults('Peixaria')"><b>Peixarias</b></p>
+          <p class="list-group-item" id="Bomba de Combustível" onclick="filterResults('Bomba de Combustível')"><b>Bombas de Combustível</b></p>
+          <p class="list-group-item" id="Gás" onclick="filterResults('Gás')"><b>Gás</b></p>
+          <p class="list-group-item" id="Oficina" onclick="filterResults('Oficina')"><b>Oficinas</b></p>
+          <p class="list-group-item" id="Banco" onclick="filterResults('Banco')"><b>Bancos</b></p>
+          <p class="list-group-item" id="Serviço Administrativo" onclick="filterResults('Serviço Administrativo')"><b>Serviços Administrativos</b></p>
+          <p class="list-group-item" id="Telecomunicações" onclick="filterResults('Telecomunicações')"><b>Telecomunicações</b></p>
+          <p class="list-group-item" id="Veterinário" onclick="filterResults('Veterinário')"><b>Veterinários</b></p>
+        </div>
+      </div>
+      <!-- ======================================================================= -->
+
+      <div class="col-xl-9 col-lg-9 col-md-12">
+        <!-- === Resultados da Pesquisa == -->
+        <div class="row" id="results"></div>
+          <!-- ============================= -->
+
+          <!-- === Carregar Mais Resultados == -->
+          <div class="row justify-content-center" id="loadMore" style="display: none;">
+            <button class="btn col-xl-4 col-lg-4 col-md-6 col-sm-10 col-12 load-button" onclick="loadMore()">Load More</button>
+          </div>
+          <!-- ============================= -->
+      </div><!-- /.col-lg-9 -->
+    </div><!-- /.row -->
   </div><!-- /.container -->
   
   <!-- Footer -->
-  <footer style="background-color: white;margin-top: 200px;">
+  <footer style="background-color: white;">
     <div class="footer-above">
-      <div class="section" style="margin-left: 10%;margin-right: 10%;">
+      <div class="section" style="margin-left: 10%; margin-right: 10%;">
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12" id="footer_title" style="text-align: center;">
-            <div style="display: inline-block;">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 footer_title">
               <div class="row">
                 <div class="col-12">
-                  <img id="final_logo" src="img/proximo.png">
+                  <img class="final_logo" src="img/proximo.png">
                 </div>
 
               </div>
@@ -196,14 +202,13 @@
 
                 </div>
               </div>
-            </div>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-6 footer-text">
             <p>CONTACTOS</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mattis lacus leo</p>
             <p>email@proximo.pt </p>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-6 footer-text">
             <p>LIGAÇÕES ÚTEIS</p>
             <p>Informação sobre a iniciativa</p>
             <p>Website (pesquisa)</p>
@@ -216,7 +221,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12" style="text-align: center;padding-top: 30px;padding-bottom: 30px;">
-            <p id="copyright_text">© 2020 - Todos os direitos reservados. proxi_mo</p>
+            <p class="copyright_text">© 2020 - Todos os direitos reservados. proxi_mo</p>
 
           </div>
         </div>

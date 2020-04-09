@@ -235,6 +235,7 @@ i.fa {
   border-radius: 10px;
   border-color:#f1f4fa;
   background-color: #f1f4fa;
+  color: #4a4a4a;
 }
 
 .card:hover{
@@ -250,24 +251,9 @@ i.fa {
 }
 
 .card-title{
-  margin-top:50px;
-  color: #383838;
-}
-
-.card-text{
-  color : #707070;
-}
-
-.card-title-clicked{
+  margin-top:50px; 
   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
-  color: #f1f4fa;
-
 }
-
-.card-text-clicked{
-  color: #f1f4fa;
-}
-
 
 .card-holder{
   padding:30px;

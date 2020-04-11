@@ -462,6 +462,7 @@ function loadSearch(){
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
             if(data["state"] != "error"){
+                companies = [];
                 /* Get the companies keys and generate a list containing only the companies details. */
                 companies_keys = Object.keys(data["companies"]);
 

@@ -140,7 +140,7 @@ function selectCounty(county){
     document.getElementById('counties').innerText = county[0];
 
     /* Update the selected coordinate hash */
-    selected_county_coords = county[1];
+    selected_county = county[0];
 
     /* Enable the search button */
     document.getElementById("search_button").removeAttribute("disabled");
@@ -454,11 +454,11 @@ function loadSearch(){
     results.style.display = 'none';
     results.innerHTML = '';
     selected_id = -1;
-    console.log(selected_county_coords);
+    console.log(selected_county);
 
     /* API call */
     $.ajax({
-        url: api_url+"companies_by_location?geohash="+selected_county_coords,
+        url: api_url+"companies_by_location?county="+selected_county,
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
             if(data["state"] != "error"){

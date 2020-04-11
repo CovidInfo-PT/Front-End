@@ -16,7 +16,7 @@ var n_results = 9;
 /**
  * Url for the api requests.
  */
-var api_url = "http://127.0.0.1:8000/";
+var api_url = "http://api.proxi-mo.pt/";
 
 /**
  * Array that stores the companies colected from the search.
@@ -51,7 +51,6 @@ function getDistricts(){
     /* Api call*/
     $.ajax({
         "url": api_url+"all_districts", 
-
         success : function(data){
             /* Get the table by its id */
             var select = document.getElementById('districts_items');

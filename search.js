@@ -102,6 +102,7 @@ function getCounty(selected_district){
         url: api_url+"counties_by_distric?district="+selected_district, 
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
+            console.log(data);
             /* Clear the available options in the dropdown */
             select.innerHTML = '';
             
@@ -453,16 +454,17 @@ function loadSearch(){
     results.style.display = 'none';
     results.innerHTML = '';
     selected_id = -1;
+    console.log(selected_county_coords);
 
     /* API call */
     $.ajax({
         url: api_url+"companies_by_location?geohash="+selected_county_coords,
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
+            if(data["state"] != "error"){
+                /* Get the companies keys and generate a list containing only the companies details. */
+                companies_keys = Object.keys(data["companies"]);
 
-            /* Get the companies keys and generate a list containing only the companies details. */
-            companies_keys = Object.keys(data["companies"]);
-            if(companies_keys.length > 0){
                 companies_keys.forEach(key => {
                 companies.push(data["companies"][key]);
                 });
@@ -484,6 +486,7 @@ function loadSearch(){
                 }
                 /* Enable the visualization of the results shown. */
                 results.style.display = '';
+        
             }
             else{
                 var text_div = document.createElement("div");

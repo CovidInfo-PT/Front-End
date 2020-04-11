@@ -34,6 +34,15 @@ var days = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feir
 var select_county_coords = []
 
 /**
+ * Icons for the categories
+ */
+var categories_icon = { "Saúde" : "fa-medkit", "Farmácia" : "fa-plus-square", "Restaurante" : "fa-utensils",
+        "Mercado" : "fa-shopping-basket", "Padaria" : "img/padaria.svg", "Talho" : "img/faca.svg",
+        "Peixaria" : "fa-fish", "Bomba de Combustível" : "fa-gas-pump", "Gás" : "fa-burn", "Oficina" : "fa-car-crash",
+        "Banco" : "fa-money-check-alt", "Serviço Administrativo" : "fa-users-cog",
+        "Telecomunicações" : "fa-satellite-dish", "Veterinário" : "fa-paw" }
+
+/**
  * Requests the api for all districts available and
  * populates the dropdown with the id "districts"
  * by inserting elements in the table with the id "districts_items".
@@ -162,7 +171,7 @@ function generate_card(company, id){
         img.src = company["images"]["logo"];
     }
     else{
-        img.src = "favicon/android-chrome-512x512.png"
+        img.src = "img/default_logo.png"
     }
     img.alt = "Logo of the Company";
     
@@ -290,7 +299,51 @@ function generate_details(id){
     info1_div.appendChild(delevery);
 
     /* Span containing the social pages information. */
+    var categories = document.createElement("span");
+    categories_text = document.createElement("p");
+    categories_text.innerHTML = "<b>Categorias:</b>";
+    categories.appendChild(categories_text);
+    /* Div to indicate the use of collumns inside. */
+    var categories_div = document.createElement("div");
+    categories_div.classList.add("row");
+    /* Use the hole row as one collumn. */
+    var categories_col = document.createElement("div");
+    categories_col.classList.add("col-12")
+
+    for(l = 0; l < companies[id]["categories"].length; l++){
+        if(companies[id]["categories"][l] == "Padaria" || companies[id]["categories"][l] == "Talho"){
+            var category = document.createElement("img");
+            category.src = categories_icon[companies[id]["categories"][l]];
+            category.style.width = "30px";
+            category.style.height = "30px";
+            categories_col.appendChild(category);
+        }
+        else{
+            var category = document.createElement("i");
+            category.classList.add("fas");
+            category.classList.add(categories_icon[companies[id]["categories"][l]]);
+            if(companies[id]["categories"][l] != "Banco" && companies[id]["categories"][l]  != "Serviço Administrativo"){
+                category.classList.add("fa-lg");
+            }
+            category.classList.add("button");
+            categories_col.appendChild(category);
+        }
+    }
+
+    /* Append the collumn div to the row div. */
+    categories_div.appendChild(categories_col);
+
+    /* Append the row div to the span div. */
+    categories.appendChild(categories_div);
+
+    /* Add the categories info. */
+    info1_div.appendChild(categories);
+
+    /* Span containing the social pages information. */
     var social = document.createElement("span");
+    social_text = document.createElement("p");
+    social_text.innerHTML = "<b>Redes Sociais:</b>";
+    social.appendChild(social_text);
 
     /* Div to indicate the use of collumns inside. */
     var social_div = document.createElement("div");
@@ -304,7 +357,7 @@ function generate_details(id){
     if(companies[id]["social"]["facebook"] != ""){
         var a = document.createElement("a");
         var fb = document.createElement("i");
-        fb.classList.add("fa");
+        fb.classList.add("fab");
         fb.classList.add("fa-facebook");
         fb.classList.add("fa-lg");
         fb.classList.add("button");
@@ -317,7 +370,7 @@ function generate_details(id){
     if(companies[id]["social"]["instagram"] != ""){
         var a = document.createElement("a");
         var ig = document.createElement("i");
-        ig.classList.add("fa");
+        ig.classList.add("fab");
         ig.classList.add("fa-instagram");
         ig.classList.add("fa-lg");
         ig.classList.add("button");
@@ -330,8 +383,8 @@ function generate_details(id){
     if(companies[id]["social"]["twitter"] != ""){
         var a = document.createElement("a");
         var tt = document.createElement("i");
-        tt.classList.add("fa");
-        tt.classList.add("fa-instagram");
+        tt.classList.add("fab");
+        tt.classList.add("fa-twitter");
         tt.classList.add("fa-lg");
         tt.classList.add("button");
         a.href = companies[id]["social"]["twitter"];
@@ -343,8 +396,8 @@ function generate_details(id){
     if(companies[id]["gmaps_url"] != ""){
         var a = document.createElement("a");
         var gm = document.createElement("i");
-        gm.classList.add("fa");
-        gm.classList.add("fa-map-marker");
+        gm.classList.add("fas");
+        gm.classList.add("fa-map-marker-alt");
         gm.classList.add("fa-lg");
         gm.classList.add("button");
         a.href = companies[id]["gmaps_url"];
@@ -404,29 +457,45 @@ function loadSearch(){
     $.ajax({
         url: api_url+"companies_by_location?geohash="+selected_county_coords, 
         success : function(data){
+
             /* Get the companies keys and generate a list containing only the companies details. */
             companies_keys = Object.keys(data["companies"]);
-            companies_keys.forEach(key => {
-               companies.push(data["companies"][key]);
-            });
+            if(companies_keys.length > 0){
+                companies_keys.forEach(key => {
+                companies.push(data["companies"][key]);
+                });
 
-            /* If there are more companies to show than the number of allowed companies to show. */
-            if(companies.length > n_results){
-                /* Load only the allowed number. */
-                for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
-                    results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                /* If there are more companies to show than the number of allowed companies to show. */
+                if(companies.length > n_results){
+                    /* Load only the allowed number. */
+                    for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
+                        results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                    }
+                    /* Display the button to allow the load of more companies. */
+                    document.getElementById('loadMore').style.display = '';
                 }
-                /* Display the button to allow the load of more companies. */
-                document.getElementById('loadMore').style.display = '';
+                else{
+                    /* Load all the companies returned. */
+                    for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
+                        results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                    }
+                }
+                /* Enable the visualization of the results shown. */
+                results.style.display = '';
             }
             else{
-                /* Load all the companies returned. */
-                for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
-                    results.appendChild(generate_card(companies[loadedResults], loadedResults));
-                }
+                var text_div = document.createElement("div");
+                text_div.classList.add("col-12");
+                text_div.style.marginTop = "20%";
+                var text = document.createElement("h3");
+                text.innerText = "Não Existem Estabelecimentos";
+                text.style.color = "#4a4a4a";
+                text.style.textAlign = "center";
+                text_div.appendChild(text);
+                results.appendChild(text_div);
+                results.style.display = '';
             }
-            /* Enable the visualization of the results shown. */
-            results.style.display = '';
+            console.log(companies[9]);
         }
     });
 
@@ -494,7 +563,7 @@ function loadMore(){
         for(c=loadedResults; c < companies.length; c++){
             for(l = 0; l < companies[c]["categories"].length; l++){
                 if(filters.indexOf(companies[c]["categories"][l]) >= 0){
-                    results.appendChild(generate_card(companies[c], loadedResults));
+                    results.appendChild(generate_card(companies[c], c));
                     loadedResults++;
                     break;
                 }
@@ -533,7 +602,12 @@ function loadDetails(id){
         var details = document.getElementById('details');
         details.parentNode.removeChild(details);
         /* Remove the active class from the corresponding node. */
-        childnodes[selected_id].childNodes[1].classList.remove("card-clicked");
+        for(k = 0; k < childnodes.length; k ++){
+            if(childnodes[k].id == selected_id){
+                childnodes[k].childNodes[1].classList.remove("card-clicked");
+            }
+        }
+        
 
     }
 
@@ -541,8 +615,14 @@ function loadDetails(id){
     if(selected_id != id){
         /* Update the selected id. */
         selected_id = id;
+        
         /* Add the active class to the corresponding general card. */
-        childnodes[selected_id].childNodes[1].classList.add("card-clicked");
+        for(k = 0; k < childnodes.length; k ++){
+            if(childnodes[k].id == selected_id){
+                childnodes[k].childNodes[1].classList.add("card-clicked");
+            }
+        }
+
         /* Deppending on the screen size the position of the detail card differs. */
         /* < 992 -> one result per row -> detail card is placed after the card. */
         if(document.getElementsByTagName('body')[0].clientWidth < 992){
@@ -650,19 +730,33 @@ function filterResults(filter){
     /* Load the results that correspond to the applied filters. */
     else{
         loadedResults = 0;
-        for(c=0; c < companies.length; c++){
+        var c = 0;
+        for(; c < companies.length; c++){
             for(l = 0; l < companies[c]["categories"].length; l++){
-                if(loadedResults >= n_results){
+                if(filters.indexOf(companies[c]["categories"][l]) >= 0){
+                    results.appendChild(generate_card(companies[c], c));
+                    loadedResults++;
                     break;
                 }
-                if(filters.indexOf(companies[c]["categories"][l]) >= 0){
-                    results.appendChild(generate_card(companies[c], loadedResults));
-                    loadedResults++;
-                }
             } 
+            if(loadedResults >= n_results){
+                break;
+            }
         }
         if(loadedResults >= n_results){
             document.getElementById('loadMore').style.display = '';
+        }
+        if(loadedResults == 0){
+            var text_div = document.createElement("div");
+            text_div.classList.add("col-12");
+            text_div.style.marginTop = "20%";
+            var text = document.createElement("h3");
+            text.innerText = "Não Existem Estabelecimentos";
+            text.style.color = "#4a4a4a";
+            text.style.textAlign = "center";
+            text_div.appendChild(text);
+            results.appendChild(text_div);
+            results.style.display = '';
         }
     }
     results.style.display = '';
@@ -730,7 +824,7 @@ function generate_schedule(id, info2_div){
             
             /* If the streak is more than one day. */
             if(equal_days[0] != equal_days[1]){ 
-                var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b><br/> | ";
+                var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b></p><p>| ";
                 companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                     text += schedule + " | "
                 });
@@ -739,7 +833,7 @@ function generate_schedule(id, info2_div){
             }
             /* If the streak is only of one day. */
             else{
-                var text = "<p><b>" + days[equal_days[0]] + "</b><br/> | ";
+                var text = "<p><b>" + days[equal_days[0]] + "</b></p><p>| ";
                 companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                     text += schedule + " | ";
                 });
@@ -758,7 +852,7 @@ function generate_schedule(id, info2_div){
     }else{
         var span = document.createElement("span");
         if(equal_days[0] != equal_days[1]){
-            var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b><br/> | ";
+            var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b></p><p>| ";
             companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                 text += schedule + " | "
             });
@@ -766,7 +860,7 @@ function generate_schedule(id, info2_div){
             span.innerHTML = text;
         }
         else{
-            var text = "<p><b>" + days[equal_days[0]] + "</b><br/> | ";
+            var text = "<p><b>" + days[equal_days[0]] + "</b></p><p>| ";
             companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                 text += schedule + " | ";
             });
@@ -781,7 +875,7 @@ function generate_schedule(id, info2_div){
     /* Add the sunday case. */
     var span = document.createElement("span");
     if(equal_days[0] != equal_days[1]){
-        var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b><br/> | ";
+        var text = "<p><b>" +days[equal_days[0]] + " - " + days[equal_days[1]] + "</b></p><p>| ";
                 companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                     text += schedule + " | "
                 });
@@ -789,7 +883,7 @@ function generate_schedule(id, info2_div){
                 span.innerHTML = text;
     }
     else{
-        var text = "<p><b>" + days[equal_days[0]] + "</b><br/> | ";
+        var text = "<p><b>" + days[equal_days[0]] + "</b></p><p>| ";
                 companies[id]["schedules"][days[equal_days[0]]].forEach( schedule => {
                     text += schedule + " | ";
                 });

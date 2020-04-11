@@ -119,16 +119,40 @@ h1{
 /* ! ======================================================================================== */
 
 /* ! =================================== Icons ========================================== */
-i.fa {
+
+i.fa-angle-right {
   width: 40px;
   height: 40px;
   display: inline-block;
   border-radius: 70px;
   box-shadow: 0 5px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 0.7rem;
   vertical-align: middle;
-
 }
+
+footer i.fab{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 70px;
+  box-shadow: 0 5px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  vertical-align: middle;
+}
+
+footer i.fa-facebook{
+  padding-top: 13px;
+  padding-left: 2px;
+}
+
+footer i.fa-twitter{
+  padding-top: 13px;
+  padding-left: 2px;
+}
+
+footer i.fa-instagram{
+  padding-top: 13px;
+  padding-left: 2px;
+}
+
 /* ! ======================================================================================== */
 
 /* ! =================================== Footer ========================================== */
@@ -215,8 +239,8 @@ i.fa {
 }
 
 .search_button {
-  padding-left: 15px !important;
-  padding-top: 4px !important;
+  padding-left: 4px !important;
+  padding-top: 5px !important;
   background-color: white;
   color: #879df2;
   box-shadow: none;
@@ -260,6 +284,7 @@ i.fa {
   padding-top:50px;
   margin:10px;
   margin-top:-30px;
+  margin-bottom: 75px;
   border-radius: 30px;
   background-color: white;
   z-index:4;
@@ -285,7 +310,7 @@ i.fa {
   display: inline-block;
   width:  100%;
   max-height: 40rem;
-  min-height: 280px;
+  min-height: 10rem;
   padding: 20px;
   margin: 30px;
   border-radius: 10px;
@@ -302,17 +327,27 @@ i.fa {
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-.details-card  i{
-  background-color: #f1f4fa;
-  color: black;
-  margin-right: 5px;
+.details-card  i.fas{
+  color: #f1f4fa;
+  margin-right: 10px;
 }
+
+.details-card  i.fab{
+  color: #f1f4fa;
+  margin-right: 10px;
+}
+
 .details-card b{
   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
 }
 
+.details-card div {
+  margin-bottom: 10px;
+}
+
 .details-card-section{
   margin-bottom: 20px;
+  padding-left: 50px;
 }
 /* ! ======================================================================================== */
 

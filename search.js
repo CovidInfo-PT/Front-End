@@ -51,6 +51,7 @@ function getDistricts(){
     /* Api call*/
     $.ajax({
         "url": api_url+"all_districts", 
+        "Access-Control-Allow-Origin" : "*",
         success : function(data){
             /* Get the table by its id */
             var select = document.getElementById('districts_items');
@@ -99,6 +100,7 @@ function getCounty(selected_district){
     /* API call */
     $.ajax({
         url: api_url+"counties_by_distric?district="+selected_district, 
+        "Access-Control-Allow-Origin" : "*",
         success : function(data){
             /* Clear the available options in the dropdown */
             select.innerHTML = '';
@@ -454,7 +456,8 @@ function loadSearch(){
 
     /* API call */
     $.ajax({
-        url: api_url+"companies_by_location?geohash="+selected_county_coords, 
+        url: api_url+"companies_by_location?geohash="+selected_county_coords,
+        "Access-Control-Allow-Origin" : "*",
         success : function(data){
 
             /* Get the companies keys and generate a list containing only the companies details. */

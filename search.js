@@ -16,7 +16,7 @@ var n_results = 9;
 /**
  * Url for the api requests.
  */
-var api_url = "http://api.proxi-mo.pt/";
+var api_url = "https://api.proxi-mo.pt/";
 
 /**
  * Array that stores the companies colected from the search.
@@ -497,7 +497,6 @@ function loadSearch(){
                 results.appendChild(text_div);
                 results.style.display = '';
             }
-            console.log(companies[9]);
         }
     });
 

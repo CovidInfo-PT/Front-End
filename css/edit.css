@@ -270,6 +270,8 @@ i.fa {
   .nav-item {
       padding-left: 35px;
   }
+
+
 }
 
 @media (min-width: 991px) and (max-width: 1715px) {
@@ -284,6 +286,34 @@ i.fa {
     padding-bottom: 200;
   }
 }
+@media (min-width: 991px) and (max-width: 1150px) {
+
+
+  #aberto {
+    width: 240%;
+    right: -350px;
+    top: -300px
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1320px) {
+
+#aberto {
+  width: 240%;
+  right: -350px;
+  top: -360px
+}
+}
+
+@media (min-width: 1320px) and (max-width: 1700px) {
+
+#aberto {
+  width: 240%;
+  right: -450px;
+  top: -400px
+}
+}
+
 
 @media only screen and (min-width: 1200px) {
   #head {

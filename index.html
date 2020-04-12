@@ -299,26 +299,6 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Our JavaScript -->
-  <script>
-    $(document).ready(aspectratio169);
-    $(window).on('resize', aspectratio169);
-
-    function aspectratio169() {
-      // var mapElement = document.getElementById("iframe");
-      // mapElement.style.height = mapElement.offsetWidth * 0.5625 + 'px';
-      if (window.innerWidth > 500 && innerWidth < 767){
-        var window_width = window.innerWidth;
-        var image = document.getElementById('aberto');
-        console.log("left -> " + image.style.left);  
-        image.style.left = Math.floor(window_width*0.156 - 238) + "px";
-        console.log("new left -> " + Math.floor(window_width*0.156 -500));
-      }
-      // console.log(horizontalCenter);
-      // console.log($("#aberto").innerWidth());
-    }
-
-    
-  </script>
 
 </body>
 

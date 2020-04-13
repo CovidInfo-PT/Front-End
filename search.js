@@ -236,11 +236,13 @@ function generate_card(company, id){
 function generate_details(id){
 
     /* Div that contains the card. */
+    var outside_card = document.createElement("div");
+    
+    outside_card.classList.add("col-xl-12");
+    outside_card.classList.add("col-lg-12");
+    outside_card.id = "details";
     var card_div = document.createElement("div");
-    card_div.classList.add("col-xl-12");
-    card_div.classList.add("col-lg-12");
     card_div.classList.add("details-card");
-    card_div.id = "details";
 
     /* Div that indicates that there are multiple collumns being used inside. */
     var row = document.createElement("div");
@@ -269,17 +271,23 @@ function generate_details(id){
     var text = document.createElement("p");
     text.innerHTML = "";
     /* For each cellphone insert it's contenct and a break line. */
+    var counter = 0;
     companies[id]["contacts"]["cellphone"].forEach(contact => {
         if(contact != ""){
-            text.innerHTML += contact;
-            text.innerHTML += "<br/>";
+            if(counter != 0){
+                text.innerHTML += "<br/>";
+            }
+            text.innerHTML += contact.slice(0,3) + " " + contact.slice(3,6) + " " + contact.slice(6,9);
+            counter ++;
         }
     });
     /* For each telephone insert it's contenct and a break line. */
     companies[id]["contacts"]["telephone"].forEach(contact => {
         if(contact != ""){
-            text.innerHTML += contact;
-            text.innerHTML += "<br/>";
+            if(counter != 0){
+                text.innerHTML += "<br/>";
+            }
+            text.innerHTML += contact.slice(0,3) + " " + contact.slice(3,6) + " " + contact.slice(6,9);
         }
     });
     contact.appendChild(text);
@@ -289,13 +297,13 @@ function generate_details(id){
 
     /* Span containing home delevery info. */
     var delevery = document.createElement("span");
-    delevery.innerHTML = "<p><b> Entregas ao Domicílio: </b><br/>";
     delevery.classList.add("col-xl-12");
     delevery.classList.add("col-lg-12");
     delevery.classList.add("detail-title");
 
+    delevery.innerHTML = "<p><b> Entregas ao Domicílio: </b></p>";
     /* If home_delevery is true than append yes otherwise append No. */
-    delevery.innerHTML += companies["home_delivery"] ? "Sim</p>" : "Não</p>";
+    delevery.innerHTML += companies["home_delivery"] ? "<p>Sim</p>" : "<p>Não</p>";
 
     /* Add home delevery info. */
     info1_div.appendChild(delevery);
@@ -441,8 +449,8 @@ function generate_details(id){
     row.appendChild(info2_div);
     /* Add the row div to the card. */
     card_div.appendChild(row);
-
-    return card_div;
+    outside_card.appendChild(card_div);
+    return outside_card;
 }
 
 /**
@@ -454,7 +462,6 @@ function loadSearch(){
     results.style.display = 'none';
     results.innerHTML = '';
     selected_id = -1;
-    console.log(selected_county);
 
     /* API call */
     $.ajax({

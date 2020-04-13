@@ -315,11 +315,11 @@ i.fa {
 }
 
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
   #head {
     height: calc(100vh - 90px);
   }
-}
+} */
 
 
 @media only screen and (max-width: 1200px) {

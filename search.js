@@ -462,6 +462,7 @@ function loadSearch(){
     results.style.display = 'none';
     results.innerHTML = '';
     selected_id = -1;
+    document.getElementById('loadMore').style.display = "none";
 
     /* API call */
     $.ajax({

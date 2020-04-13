@@ -169,6 +169,7 @@ function generate_card(company, id){
     /* Logo image of the company (if empty use the default image). */
     var img = document.createElement('img');
     img.classList.add('card-img-top');
+    img.style.backgroundColor = "#707070";
     if(company["images"]["logo"] != ''){
         img.src = company["images"]["logo"];
     }

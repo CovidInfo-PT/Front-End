@@ -28,18 +28,18 @@
 <body>
   <!-- Nav Bar -->
 
-  <nav class="navbar navbar-expand-xl " style="z-index: 2;padding-left: 10%;padding-right: 10%;padding-top: 30px;">
-    <a class="navbar-brand" href="#"><img style="max-width: 150px;" src="img/proximo.png"></a>
+  <nav class="navbar navbar-expand-xl">
+    <a class="navbar-brand" href="https://teste.proxi-mo.pt/searchpage.html"> <img class="logo-image" src="img/proximo.png"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" style="color: #212529; cursor: default; font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;">Procurar</a>
+        <li class="nav-item">
+          <a class="nav-link nav-selected">Procurar</a>
         </li>
-        <li class="nav-item" style="color: #212529; cursor: default;">
+        <li class="nav-item">
           <a class="nav-link" href="index.html">Quem somos</a>
         </li>
         <li class="nav-item">
@@ -50,10 +50,10 @@
 
     <!-- Page Content -->
 
-    <div class="section" style="margin-left: 10%!important;margin-right: 10%!important;">
+    <div class="section">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
-            <div id="main_text_search" style="font-weight: bold; font-size: 300%;color: #707070;line-height: 60px;" >
+            <div class="main_text_search">
                 O que existe à tua volta?
             </div>
             
@@ -171,8 +171,8 @@
       <div class="col-xl-9 col-lg-9 col-md-12">
         <!-- === Resultados da Pesquisa == -->
         <div class="row" id="results">
-          <div class="col-12" style="margin-top: 20%">
-            <h3 style="text-align: center; color: #4a4a4a"> Insira o seu distrito e concelho para começar a procura.</h3>
+          <div class="col-12 search-start">
+            <h3> Insira o seu distrito e concelho para começar a procura.</h3>
           </div>
 
         </div>
@@ -188,22 +188,21 @@
   </div><!-- /.container -->
   
   <!-- Footer -->
-  <footer style="background-color: white;">
+  <footer class="footer">
     <div class="footer-above">
-      <div class="section" style="margin-left: 10%; margin-right: 10%;">
+      <div class="section">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 footer_title">
               <div class="row">
                 <div class="col-12">
                   <img class="final_logo" src="img/proximo.png">
                 </div>
-
               </div>
               <div class="row">
                 <div class="col-12">
-                  <a href="https://facebook.com/pt.proximo" target="_blank" style="color: #212529;"><i class="fab fa-facebook fa-lg button"></i></a>
-                  <a href="https://twitter.com/proxi_mo" target="_blank" style="color: #212529;"> <i class="fab fa-twitter fa-lg button" ></i></a>
-                    <a href="https://www.instagram.com/pt.proximo/" target="_blank" style="color: #212529;"><i class="fab fa-instagram fa-lg button"></i></a>
+                  <a href="https://facebook.com/pt.proximo" target="_blank"><i class="fab fa-facebook fa-lg button"></i></a>
+                  <a href="https://twitter.com/proxi_mo" target="_blank"> <i class="fab fa-twitter fa-lg button" ></i></a>
+                    <a href="https://www.instagram.com/pt.proximo/" target="_blank"><i class="fab fa-instagram fa-lg button"></i></a>
 
                 </div>
               </div>
@@ -224,7 +223,7 @@
     <div class="footer-below">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12" style="text-align: center;padding-top: 30px;padding-bottom: 30px;">
+          <div class="col-lg-12 copyright">
             <p class="copyright_text">© 2020 - Todos os direitos reservados. proxi_mo</p>
 
           </div>

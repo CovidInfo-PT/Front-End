@@ -102,7 +102,6 @@ function getCounty(selected_district){
         url: api_url+"counties_by_distric?district="+selected_district, 
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
-            console.log(data);
             /* Clear the available options in the dropdown */
             select.innerHTML = '';
             
@@ -169,12 +168,11 @@ function generate_card(company, id){
     /* Logo image of the company (if empty use the default image). */
     var img = document.createElement('img');
     img.classList.add('card-img-top');
-    img.style.backgroundColor = "#707070";
     if(company["images"]["logo"] != ''){
         img.src = company["images"]["logo"];
     }
     else{
-        img.src = "img/default_logo.png"
+        img.src = "img/default_logo.jpg"
     }
     img.alt = "Logo of the Company";
     
@@ -325,8 +323,7 @@ function generate_details(id){
         if(companies[id]["categories"][l] == "Padaria" || companies[id]["categories"][l] == "Talho"){
             var category = document.createElement("img");
             category.src = categories_icon[companies[id]["categories"][l]];
-            category.style.width = "30px";
-            category.style.height = "30px";
+            category.classList.add("card-category-img");
             categories_col.appendChild(category);
         }
         else{
@@ -471,41 +468,51 @@ function loadSearch(){
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
             if(data["state"] != "error"){
-                companies = [];
-                /* Get the companies keys and generate a list containing only the companies details. */
-                companies_keys = Object.keys(data["companies"]);
+                if(Object.keys(data["companies"]).length > 0){
+                    companies = [];
+                    /* Get the companies keys and generate a list containing only the companies details. */
+                    companies_keys = Object.keys(data["companies"]);
 
-                companies_keys.forEach(key => {
-                companies.push(data["companies"][key]);
-                });
+                    companies_keys.forEach(key => {
+                    companies.push(data["companies"][key]);
+                    });
 
-                /* If there are more companies to show than the number of allowed companies to show. */
-                if(companies.length > n_results){
-                    /* Load only the allowed number. */
-                    for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
-                        results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                    /* If there are more companies to show than the number of allowed companies to show. */
+                    if(companies.length > n_results){
+                        /* Load only the allowed number. */
+                        for(loadedResults = 0; loadedResults < n_results; loadedResults ++){
+                            results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                        }
+                        /* Display the button to allow the load of more companies. */
+                        document.getElementById('loadMore').style.display = '';
                     }
-                    /* Display the button to allow the load of more companies. */
-                    document.getElementById('loadMore').style.display = '';
+                    else{
+                        /* Load all the companies returned. */
+                        for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
+                            results.appendChild(generate_card(companies[loadedResults], loadedResults));
+                        }
+                    }
+                    /* Enable the visualization of the results shown. */
+                    results.style.display = '';
                 }
                 else{
-                    /* Load all the companies returned. */
-                    for(loadedResults = 0; loadedResults < companies.length; loadedResults ++){
-                        results.appendChild(generate_card(companies[loadedResults], loadedResults));
-                    }
+                    var text_div = document.createElement("div");
+                    text_div.classList.add("col-12");
+                    text_div.classList.add("search-start")
+                    var text = document.createElement("h3");
+                    text.innerText = "Não Existem Estabelecimentos";
+                    text_div.appendChild(text);
+                    results.appendChild(text_div);
+                    results.style.display = '';
                 }
-                /* Enable the visualization of the results shown. */
-                results.style.display = '';
         
             }
             else{
                 var text_div = document.createElement("div");
                 text_div.classList.add("col-12");
-                text_div.style.marginTop = "20%";
+                text_div.classList.add("search-start")
                 var text = document.createElement("h3");
                 text.innerText = "Não Existem Estabelecimentos";
-                text.style.color = "#4a4a4a";
-                text.style.textAlign = "center";
                 text_div.appendChild(text);
                 results.appendChild(text_div);
                 results.style.display = '';
@@ -763,11 +770,9 @@ function filterResults(filter){
         if(loadedResults == 0){
             var text_div = document.createElement("div");
             text_div.classList.add("col-12");
-            text_div.style.marginTop = "20%";
+            text_div.classList.add("search-start");
             var text = document.createElement("h3");
             text.innerText = "Não Existem Estabelecimentos";
-            text.style.color = "#4a4a4a";
-            text.style.textAlign = "center";
             text_div.appendChild(text);
             results.appendChild(text_div);
             results.style.display = '';

@@ -103,7 +103,6 @@ h1{
 }
 
 .nav-selected{
-  color: #212529 !important; 
   cursor: default; 
   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;
 }

@@ -269,6 +269,17 @@ i.fa {
   font-family: 'proxima_nova_rgbold', Helvetica, Arial, sans-serif;;
 }
 
+@media (max-width: 370px) {
+  #objetivos {
+      padding-left: 30px;
+      padding-right: 35px;
+      padding-top: 30px;
+      padding-bottom: 30px!important;
+  }
+
+
+}
+
 @media (min-width: 1200px) and (max-width: 1357px) {
   .nav-item {
       padding-left: 35px;

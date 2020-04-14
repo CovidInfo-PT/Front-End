@@ -111,13 +111,14 @@
 
           <!-- NORMAL -->
           <div class="row normal_size">
-            <div class="col-lg-5 col-sm-5 col-6 index_section_title objetivo_text" style="margin-top:21%">
+            <div id="objetivo_text_div" class="col-lg-5 col-sm-5 col-6 index_section_title objetivo_text" style="margin-top:21%">
               Objetivo
             </div>
-            <div class="col-lg-7 col-sm-7 col-6 normal_size">
+            <div id="objetivo_image_div" class="col-lg-7 col-sm-7 col-6 normal_size">
               <img id="objetivos" class="responsive" src="static/img/objetivos.png">
             </div>
           </div>
+
 
           <!-- BETWEEN 991px AND 1715px -->
 
@@ -299,10 +300,28 @@
   <!-- Our JavaScript -->
   <script>
     $(window).on("resize", function () {
+      console.log("resize!");
+      if ($("#app_download").height() < $("#download_image").height()){
+        var new_size_height = $("#app_download").height() + "px";
+        var new_size_width = $("#app_download").height() * 1.209562029 + "px";
+        $("#download_image").css("height",new_size_height);
+        $("#download_image").css("width",new_size_width);
+      }
       if ($(window).height() < 911) {
         $('#head').height('911px');
       } else {
         $('#head').height($(window).height() + 'px');
+      }
+      if ($(window).width() < 370) {
+        $("#objetivo_text_div").removeClass("col-6");
+        $("#objetivo_text_div").addClass("col-12");
+        $("#objetivo_image_div").removeClass("col-6");
+        $("#objetivo_image_div").addClass("col-12");
+      } else {
+        $("#objetivo_text_div").removeClass("col-12");
+        $("#objetivo_text_div").addClass("col-6");
+        $("#objetivo_image_div").removeClass("col-12");
+        $("#objetivo_image_div").addClass("col-6");
       }
     }).resize();
   </script>

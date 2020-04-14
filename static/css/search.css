@@ -286,6 +286,15 @@ footer i.fa-instagram{
   color: #4a4a4a;
 }
 
+.search-results{
+  text-align: center; 
+  margin-top: 5%;
+}
+.search-results-text{
+  text-align: center; 
+  margin-top: 5%;
+}
+
 .card {
   overflow: auto;
   display: inline-block;

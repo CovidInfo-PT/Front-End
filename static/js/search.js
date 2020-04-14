@@ -498,9 +498,13 @@ function loadSearch(){
                 else{
                     var text_div = document.createElement("div");
                     text_div.classList.add("col-12");
-                    text_div.classList.add("search-start")
+                    text_div.classList.add("search-results");
+                    var img = document.createElement("img");
+                    img.src = "static/img/404.png"
                     var text = document.createElement("h3");
+                    text.classList.add("search-results-text");
                     text.innerText = "Não Existem Estabelecimentos";
+                    text_div.appendChild(img);
                     text_div.appendChild(text);
                     results.appendChild(text_div);
                     results.style.display = '';
@@ -509,13 +513,17 @@ function loadSearch(){
             }
             else{
                 var text_div = document.createElement("div");
-                text_div.classList.add("col-12");
-                text_div.classList.add("search-start")
-                var text = document.createElement("h3");
-                text.innerText = "Não Existem Estabelecimentos";
-                text_div.appendChild(text);
-                results.appendChild(text_div);
-                results.style.display = '';
+                    text_div.classList.add("col-12");
+                    text_div.classList.add("search-results");
+                    var img = document.createElement("img");
+                    img.src = "static/img/404.png"
+                    var text = document.createElement("h3");
+                    text.classList.add("search-results-text");
+                    text.innerText = "Não Existem Estabelecimentos";
+                    text_div.appendChild(img);
+                    text_div.appendChild(text);
+                    results.appendChild(text_div);
+                    results.style.display = '';
             }
         }
     });
@@ -770,9 +778,13 @@ function filterResults(filter){
         if(loadedResults == 0){
             var text_div = document.createElement("div");
             text_div.classList.add("col-12");
-            text_div.classList.add("search-start");
+            text_div.classList.add("search-results");
+            var img = document.createElement("img");
+            img.src = "static/img/404.png"
             var text = document.createElement("h3");
+            text.classList.add("search-results-text");
             text.innerText = "Não Existem Estabelecimentos";
+            text_div.appendChild(img);
             text_div.appendChild(text);
             results.appendChild(text_div);
             results.style.display = '';

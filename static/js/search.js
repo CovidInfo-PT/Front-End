@@ -500,6 +500,7 @@ function loadSearch(){
                     text_div.classList.add("col-12");
                     text_div.classList.add("search-results");
                     var img = document.createElement("img");
+                    img.classList.add("search-results-img");
                     img.src = "static/img/404.png"
                     var text = document.createElement("h3");
                     text.classList.add("search-results-text");
@@ -516,6 +517,7 @@ function loadSearch(){
                     text_div.classList.add("col-12");
                     text_div.classList.add("search-results");
                     var img = document.createElement("img");
+                    img.classList.add("search-results-img");
                     img.src = "static/img/404.png"
                     var text = document.createElement("h3");
                     text.classList.add("search-results-text");
@@ -794,6 +796,7 @@ function filterResults(filter){
             text_div.classList.add("search-results");
             var img = document.createElement("img");
             img.src = "static/img/404.png"
+            img.classList.add("search-results-img");
             var text = document.createElement("h3");
             text.classList.add("search-results-text");
             text.innerText = "Não Existem Estabelecimentos";

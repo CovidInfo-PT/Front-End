@@ -304,28 +304,28 @@ i.fa {
 
 
   #aberto {
-    width: 240%;
-    right: -350px;
-    top: -300px
+    width: 180%;
+    right: -250px;
+    top: -230px;
   }
 }
 
 @media (min-width: 1150px) and (max-width: 1320px) {
 
-#aberto {
-  width: 240%;
-  right: -350px;
-  top: -360px
-}
+  #aberto {
+    width: 190%;
+    right: -250px;
+    top: -290px;
+  }
 }
 
 @media (min-width: 1320px) and (max-width: 1700px) {
 
-#aberto {
-  width: 240%;
-  right: -450px;
-  top: -400px
-}
+  #aberto {
+    width: 180%;
+    right: -250px;
+    top: -310px;
+  }
 }
 
 

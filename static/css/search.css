@@ -47,6 +47,7 @@ html {
 body {
   font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;
   background-color:#f1f4fa;
+  overflow-x: hidden !important;
 }
 
 h1{
@@ -290,6 +291,11 @@ footer i.fa-instagram{
   text-align: center; 
   margin-top: 5%;
 }
+
+.search-results-img{
+  max-width: 80%;
+}
+
 .search-results-text{
   text-align: center; 
   margin-top: 5%;
@@ -408,7 +414,7 @@ footer i.fa-instagram{
 }
 
 .details-card .fa-map-marker-alt{
-  margin-left: 9px;
+  margin-left: 4px;
 }
 
 /* ! ======================================================================================== */
@@ -489,15 +495,29 @@ footer i.fa-instagram{
   background: rgb(133, 154, 230); 
 }
 /* ! ====================================================================================== */
-@media only screen and (max-width: 1350px) {
-  .nav-item {
-    padding-left: 35px;
+@media only screen and (max-width: 1700px) {
+  .card {
+    min-height: 18rem;
   }
 }
 
 
+
+@media only screen and (max-width: 1350px) {
+  .nav-item {
+    padding-left: 35px;
+  }
+  .card {
+    min-height: 20rem;
+  }
+}
+
 /* ! ============ col-lg-settings ================================================================== */
 @media only screen and (max-width: 1200px) {
+  .card {
+    min-height: 15rem;
+  }
+
   .bannerimage{
     height: 600px;
   }
@@ -517,6 +537,10 @@ footer i.fa-instagram{
   
   .card{
     font-size: medium;
+  }
+
+  .details-card {
+    max-height: 50rem;
   }
 
   .dropdown-filter{
@@ -578,7 +602,24 @@ footer i.fa-instagram{
     margin-top: 10px;
     padding: 0px;
     margin:0px;
+  }
+  
+  .details-card{
+    padding: 0px;
+    margin: 0px;
+  }
 
+  .details-card-section{
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  .details-card div{
+    margin-bottom: 0px;
+  }
+
+  .details-card .row{
+    margin-bottom: 20px;
   }
 
   .card-img-top{
@@ -610,6 +651,15 @@ footer i.fa-instagram{
   .search-button{
     margin-left: 0%;
   }
+
+  .details-card{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .details-card div{
+    margin-bottom: 0px;
+  }
   
   .card {
     margin-top: 10px;
@@ -626,7 +676,7 @@ footer i.fa-instagram{
 /* ! =============================================================================================== */
 
 /* ! ============ col-xs-settings ================================================================== */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 576px) {
   .selectWrapper{
     margin-left: 0%;
   }
@@ -638,5 +688,49 @@ footer i.fa-instagram{
   .search-bar{
     left: 10%;
     width:80%;
+  }
+
+  .search-results-text{
+    font-size: 1.3rem;
+    text-align: center; 
+    margin-top: 5%;
+  }
+
+  .main_text_search{
+    font-size: 200%;
+  }
+
+  .details-card{
+    padding: 0px;
+    margin: 0px;
+    font-size: 1rem;
+  }
+
+  .details-card-section{
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-left: 0px;
+  }
+
+  .details-card div{
+    margin-bottom: 0px;  
+  } 
+}
+
+@media only screen and (max-width: 350px){
+  .selectBox{
+    font-size: 0.95rem;
+    padding-top: 9px;
+  }
+  .card-title{
+    font-size: 0.95rem;
+  }
+
+  .details-card-section{
+    font-size: 0.9rem;
+  }
+
+  .card {
+    min-height: 13rem;
   }
 }

@@ -500,6 +500,7 @@ function loadSearch(){
                     text_div.classList.add("col-12");
                     text_div.classList.add("search-results");
                     var img = document.createElement("img");
+                    img.classList.add("search-results-img");
                     img.src = "static/img/404.png"
                     var text = document.createElement("h3");
                     text.classList.add("search-results-text");
@@ -516,6 +517,7 @@ function loadSearch(){
                     text_div.classList.add("col-12");
                     text_div.classList.add("search-results");
                     var img = document.createElement("img");
+                    img.classList.add("search-results-img");
                     img.src = "static/img/404.png"
                     var text = document.createElement("h3");
                     text.classList.add("search-results-text");
@@ -541,7 +543,12 @@ function loadSearch(){
     filter_list = document.getElementById("filter_dropdown").childNodes;
     for(f = 0; f < filter_list.length; f++){
         if(filter_list[f].childNodes.length > 0){
-            filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
+            if(filter_list[f].childNodes.length == 1){
+                filter_list[f].childNodes[0].classList.remove("dropdown-item-clicked");
+            }
+            else{
+                filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
+            }
         }
     }
     /* Clear the applied filter list. */
@@ -700,6 +707,7 @@ function loadDetails(id){
  * @param {filter to add/remove} filter 
  */
 function filterResults(filter){
+    console.log(filter)
     /* If the filter element has the active class. */
     if( document.getElementById(filter).classList.length >= 2){
         /* Remove the class. */
@@ -721,13 +729,20 @@ function filterResults(filter){
     filter_list = document.getElementById("filter_dropdown").childNodes;
     for(f = 0; f < filter_list.length; f++){
         
-        if(filter_list[f].childNodes.length > 0 && filter_list[f].childNodes[1].innerText == filter){
-            
+        if(filter_list[f].childNodes.length > 1 && filter_list[f].childNodes[1].innerText == filter){
             if(filter_list[f].childNodes[1].classList.length >= 2){
                 filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
             }
             else{
                 filter_list[f].childNodes[1].classList.add("dropdown-item-clicked");
+            }
+        }
+        else if(filter_list[f].childNodes.length > 0 && filter_list[f].childNodes[0].innerText == filter){
+            if(filter_list[f].childNodes[0].classList.length >= 2){
+                filter_list[f].childNodes[0].classList.remove("dropdown-item-clicked");
+            }
+            else{
+                filter_list[f].childNodes[0].classList.add("dropdown-item-clicked");
             }
         }
     }
@@ -781,6 +796,7 @@ function filterResults(filter){
             text_div.classList.add("search-results");
             var img = document.createElement("img");
             img.src = "static/img/404.png"
+            img.classList.add("search-results-img");
             var text = document.createElement("h3");
             text.classList.add("search-results-text");
             text.innerText = "Não Existem Estabelecimentos";
@@ -791,6 +807,43 @@ function filterResults(filter){
         }
     }
     results.style.display = '';
+
+}
+
+function generateFilters(){
+    /* Get the counties table element. */
+    var select = document.getElementById('filter_dropdown');
+    var filters = document.getElementById("filters");
+    $.ajax({
+        url: api_url+"categories",
+        "Access-Control-Allow-Origin" : "*",
+        success : function(data){
+
+            /* For each county returned generate an li element and insert it
+             in the table. */
+            data["categories"].forEach(cat => {
+                var li = document.createElement("li");
+                var option = document.createElement('a');
+                option.classList.add("dropdown-item");
+                option.innerText = cat;
+                /* Onclick event to enable search. */
+                option.onclick = function(){
+                    filterResults(cat);
+                }
+                li.appendChild(option);
+                select.appendChild(li);
+
+                let p = document.createElement("p");
+                p.id = cat;
+                p.classList.add("list-group-item");
+                p.onclick = function(){
+                    filterResults(cat);
+                }
+                p.innerHTML = "<b>"+ cat + "</b>";
+                filters.appendChild(p);
+            });
+        }
+    });
 
 }
 
@@ -827,6 +880,7 @@ function pageLoad(){
 
     /* Load the districts. */
     getDistricts();
+    generateFilters();
 }
 
 /**

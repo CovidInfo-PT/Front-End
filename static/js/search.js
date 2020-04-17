@@ -16,7 +16,7 @@ var n_results = 9;
 /**
  * Url for the api requests.
  */
-var api_url = "https://api.proxi-mo.pt/";
+var api_url = "https://api-teste.proxi-mo.pt/";
 
 /**
  * Array that stores the companies colected from the search.
@@ -725,26 +725,13 @@ function filterResults(filter){
         /*Add the filter to tghe filters list. */
         filters.push(filter);
     }
+
     /* Add/Remove the filter from the mobile dropdown.*/
-    filter_list = document.getElementById("filter_dropdown").childNodes;
-    for(f = 0; f < filter_list.length; f++){
-        
-        if(filter_list[f].childNodes.length > 1 && filter_list[f].childNodes[1].innerText == filter){
-            if(filter_list[f].childNodes[1].classList.length >= 2){
-                filter_list[f].childNodes[1].classList.remove("dropdown-item-clicked");
-            }
-            else{
-                filter_list[f].childNodes[1].classList.add("dropdown-item-clicked");
-            }
-        }
-        else if(filter_list[f].childNodes.length > 0 && filter_list[f].childNodes[0].innerText == filter){
-            if(filter_list[f].childNodes[0].classList.length >= 2){
-                filter_list[f].childNodes[0].classList.remove("dropdown-item-clicked");
-            }
-            else{
-                filter_list[f].childNodes[0].classList.add("dropdown-item-clicked");
-            }
-        }
+    if(document.getElementById(filter+"1").classList.length >= 2){
+        document.getElementById(filter+"1").classList.remove("dropdown-item-clicked");
+    }
+    else{
+        document.getElementById(filter+"1").classList.add("dropdown-item-clicked");
     }
 
     /* Get the results div hide and clear its content. */
@@ -818,28 +805,29 @@ function generateFilters(){
         url: api_url+"categories",
         "Access-Control-Allow-Origin" : "*",
         success : function(data){
-
+            console.log(data)
             /* For each county returned generate an li element and insert it
              in the table. */
             data["categories"].forEach(cat => {
                 var li = document.createElement("li");
                 var option = document.createElement('a');
                 option.classList.add("dropdown-item");
-                option.innerText = cat;
+                option.innerText = cat["display"];
+                option.id = cat["category"]+"1";
                 /* Onclick event to enable search. */
                 option.onclick = function(){
-                    filterResults(cat);
+                    filterResults(cat["category"]);
                 }
                 li.appendChild(option);
                 select.appendChild(li);
 
                 let p = document.createElement("p");
-                p.id = cat;
+                p.id = cat["category"];
                 p.classList.add("list-group-item");
                 p.onclick = function(){
-                    filterResults(cat);
+                    filterResults(cat["category"]);
                 }
-                p.innerHTML = "<b>"+ cat + "</b>";
+                p.innerHTML = "<b>"+ cat["display"] + "</b>";
                 filters.appendChild(p);
             });
         }

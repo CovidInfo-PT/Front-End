@@ -119,6 +119,7 @@ h1{
   background-position-x: right;
   background-position: center;
   margin-bottom: -170px;
+  -webkit-transform:translate3d(0,0,-100px);
   z-index:-1;
   position:sticky;
   display: block;

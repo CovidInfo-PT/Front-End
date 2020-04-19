@@ -471,6 +471,33 @@ footer i.fa-instagram{
   font-size: larger;
   font-weight: 900;
 }
+
+.form-button-div{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.form-button {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); ;
+  border-radius: 60px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: 100;
+  font-size:1.75rem;
+  background-color: #9CB0F5;
+  color:white;
+  transition: 0.3s;
+}
+
+.form-button:hover {
+  background-color: #4032a0;
+  color:white;
+
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
 /* ! ====================================================================================== */
 
 /* ! ============ SCROLL BAR ================================================================== */

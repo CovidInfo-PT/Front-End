@@ -508,6 +508,18 @@ function loadSearch(){
                     text_div.appendChild(img);
                     text_div.appendChild(text);
                     results.appendChild(text_div);
+                    let button_div = document.createElement("div");
+                    button_div.classList.add("col-12");
+                    button_div.classList.add("form-button-div");
+
+                    let button = document.createElement("a");
+                    button.innerText = "Contribua para a plataforma!"
+                    button.href = "https://form.proxi-mo.pt/";
+                    button.target = "_blank"
+                    button.classList.add("form-button");
+
+                    button_div.appendChild(button);
+                    results.appendChild(button_div);
                     results.style.display = '';
                 }
         
@@ -525,6 +537,18 @@ function loadSearch(){
                     text_div.appendChild(img);
                     text_div.appendChild(text);
                     results.appendChild(text_div);
+                    let button_div = document.createElement("div");
+                    button_div.classList.add("col-12");
+                    button_div.classList.add("form-button-div");
+
+                    let button = document.createElement("a");
+                    button.innerText = "Contribua para a plataforma!"
+                    button.href = "https://form.proxi-mo.pt/";
+                    button.target = "_blank"
+                    button.classList.add("form-button");
+
+                    button_div.appendChild(button);
+                    results.appendChild(button_div);
                     results.style.display = '';
             }
         }
@@ -782,14 +806,26 @@ function filterResults(filter){
             text_div.classList.add("col-12");
             text_div.classList.add("search-results");
             var img = document.createElement("img");
-            img.src = "static/img/404.png"
             img.classList.add("search-results-img");
+            img.src = "static/img/404.png"
             var text = document.createElement("h3");
             text.classList.add("search-results-text");
             text.innerText = "Não Existem Estabelecimentos";
             text_div.appendChild(img);
             text_div.appendChild(text);
             results.appendChild(text_div);
+            let button_div = document.createElement("div");
+            button_div.classList.add("col-12");
+            button_div.classList.add("form-button-div");
+
+            let button = document.createElement("a");
+            button.innerText = "Contribua para a plataforma!"
+            button.href = "https://form.proxi-mo.pt/";
+            button.target = "_blank"
+            button.classList.add("form-button");
+
+            button_div.appendChild(button);
+            results.appendChild(button_div);
             results.style.display = '';
         }
     }

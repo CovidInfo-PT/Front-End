@@ -16,7 +16,7 @@ var n_results = 9;
 /**
  * Url for the api requests.
  */
-var api_url = "https://api-teste.proxi-mo.pt/";
+var api_url = "https://api.proxi-mo.pt/";
 
 /**
  * Array that stores the companies colected from the search.

@@ -700,6 +700,11 @@ footer i.fa-instagram{
     margin-bottom:-50px;
     margin-left:-20px;
   }
+
+  .form-button {
+    padding: 10px;
+    font-size:1.5rem;
+  }
 }
 /* ! =============================================================================================== */
 
@@ -743,6 +748,15 @@ footer i.fa-instagram{
   .details-card div{
     margin-bottom: 0px;  
   } 
+  .form-button-div {
+    padding: 0px !important;
+    font-size:1rem;
+  }
+
+  .form-button {
+    padding: 10px;
+    font-size:0.85rem;
+  }
 }
 
 @media only screen and (max-width: 350px){
@@ -760,5 +774,18 @@ footer i.fa-instagram{
 
   .card {
     min-height: 13rem;
+  }
+
+  .form-button {
+    padding: 2px;
+    font-size:0.65rem;
+  }
+  .form-button-div {
+    padding: 0px !important;
+    font-size:1rem;
+  }
+
+  .search-results-text{
+    font-size:1rem;
   }
 }
